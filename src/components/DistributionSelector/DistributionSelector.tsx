@@ -10,6 +10,7 @@ import { Distribution, DistributionType, distributionTypesSelectItems } from '..
 export interface DistributionSelectorProps {
 
     value?: Distribution;
+    normalSigmaSquare: boolean;
 
     onChange(value?: Distribution): void;
 }
@@ -22,6 +23,13 @@ interface DistributionSelectorState {
 
 export class DistributionSelector extends React.Component<DistributionSelectorProps, DistributionSelectorState> {
 
+    static defaultProps: DistributionSelectorProps = {
+
+        normalSigmaSquare: true,
+
+        onChange() {}
+    };
+
     state: DistributionSelectorState = { distributionParams: {} };
 
     componentDidUpdate(
@@ -29,12 +37,16 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         prevState: Readonly<DistributionSelectorState>,
         snapshot?: any
     ) {
-        if (!isEqual(this.props.value, prevProps.value)) {
+        if (!isEqual(this.props.value, prevProps.value) && this.props.value) {
             this.setState({
                 ...this.state,
 
-                distributionType: this.props.value?.type,
-                distributionParams: mapValues(this.props.value?.params ?? {}, String)
+                distributionType: this.props.value.type,
+                distributionParams: {
+                    ...this.state.distributionParams,
+
+                    ...mapValues(this.props.value.params, String)
+                }
             });
         }
 
@@ -148,6 +160,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
     }
 
     render() {
+        const { normalSigmaSquare } = this.props;
         const { distributionType, distributionParams } = this.state;
 
         const params: { name: string, field: string }[] = [];
@@ -180,7 +193,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
 
             case DistributionType.NORMAL:
                 params.push({ name: 'a', field: 'a'});
-                params.push({ name: '\u03C3\u00B2', field: 'd'});
+                params.push({ name: '\u03C3' + (normalSigmaSquare ? '\u00B2' : ''), field: 'd'});
                 break;
         }
 

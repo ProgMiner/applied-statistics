@@ -4,28 +4,28 @@ import { Panel } from 'primereact/panel';
 export abstract class Week<P = {}, S = {}> extends React.Component<P, S> {
 
     protected readonly abstract weekName: string;
-    protected readonly weekClassNames?: string | string[];
+    protected readonly className?: string | string[];
 
-    private readonly className: string;
+    private readonly weekClassName: string;
 
     protected constructor(props: P) {
         super(props);
 
         const classNames = ['Week'];
-        if (this.weekClassNames) {
-            if (Array.isArray(this.weekClassNames)) {
-                classNames.push(...this.weekClassNames);
+        if (this.className) {
+            if (Array.isArray(this.className)) {
+                classNames.push(...this.className);
             } else {
-                classNames.push(this.weekClassNames);
+                classNames.push(this.className);
             }
         }
 
-        this.className = classNames.join(' ');
+        this.weekClassName = classNames.join(' ');
     }
 
     render() {
         return (
-            <div className={this.className}>
+            <div className={this.weekClassName}>
                 <Panel header={this.weekName} toggleable collapsed>
                     {this.renderContent()}
                 </Panel>
