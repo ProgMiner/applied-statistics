@@ -6,6 +6,7 @@ import mapValues from 'lodash/mapValues';
 import isEqual from 'lodash/isEqual';
 
 import { Distribution, DistributionType, distributionTypesSelectItems } from '../../utils/distribution';
+import { filterObject } from '../../utils/filterObject';
 
 export interface DistributionSelectorProps {
 
@@ -64,24 +65,22 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
     }
 
     private onDistributionParamChange(param: string, event: React.FormEvent<HTMLInputElement>) {
-        if (this.state.distributionParams) {
-            this.setState({
-                ...this.state,
+        this.setState({
+            ...this.state,
 
-                distributionParams: {
-                    ...this.state.distributionParams,
+            distributionParams: {
+                ...this.state.distributionParams,
 
-                    [param]: event.currentTarget.value
-                }
-            });
-        }
+                [param]: event.currentTarget.value
+            }
+        });
     }
 
     private onDistributionChange() {
         const { distributionType, distributionParams } = this.state;
 
         let newDistribution: Distribution | undefined;
-        const numericParams = mapValues(distributionParams, Number);
+        const numericParams = mapValues(filterObject(distributionParams, Boolean), Number);
         switch (distributionType) {
             case DistributionType.BERNOULLI:
                 if (!isNaN(numericParams['p'])) {

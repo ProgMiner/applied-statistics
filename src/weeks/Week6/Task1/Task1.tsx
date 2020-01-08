@@ -43,10 +43,11 @@ export class Task1 extends Task<{}, Task1State> {
     protected checkParameters(): boolean {
         const { n, distribution, randomSeed } = this.state;
 
-        const numericN = n && +n;
-        const numericRandomSeed = randomSeed && +randomSeed;
+        const numericN = n ? +n : undefined;
+        const numericRandomSeed = randomSeed ? +randomSeed : undefined;
 
-        return !!(numericN && distribution && numericRandomSeed);
+        return numericN !== undefined && !isNaN(numericN) && distribution !== undefined &&
+            numericRandomSeed !== undefined && !isNaN(numericRandomSeed);
     }
 
     protected renderParameters() {
