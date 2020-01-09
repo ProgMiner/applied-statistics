@@ -54,14 +54,17 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
                     if (response.ok) {
                         const sampleText = await response.text();
                         const sample = sampleText.split('\n')
-                            .map(s => s.trim()).filter(Boolean).map(Number);
+                            .map(s => s.trim()).filter(Boolean).map(Number)
+                            .filter(v => !isNaN(v));
 
-                        if (this.state.url === url) {
-                            this.setState({ ...this.state, loading: false, sample });
-                            this.props.onChange(sample);
+                        if (sample.length > 0) {
+                            if (this.state.url === url) {
+                                this.setState({ ...this.state, loading: false, sample });
+                                this.props.onChange(sample);
+                            }
+
+                            return;
                         }
-
-                        return;
                     }
                 }
             } catch (e) {
@@ -92,7 +95,7 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
 
         return (
             <>
-                <InputText value={url} onChange={this.onUrlChange.bind(this)} />
+                <InputText placeholder="URL-адрес выборки" value={url} onChange={this.onUrlChange.bind(this)} />
                 <ValidationIcon clickable={this.urlRegex.test(url)} valid={loading ? undefined : !!sample}
                                 onClick={this.onIconClick.bind(this)} />
             </>
