@@ -4,6 +4,8 @@ import maxBy from 'lodash/maxBy';
 import mean from 'lodash/mean';
 
 import { Task } from '../../../components/Task/Task';
+import { ValidationIcon } from '../../../components/ValidationIcon/ValidationIcon';
+import { variance } from '../../../utils/dispersion';
 
 interface Task21State {
 
@@ -39,8 +41,9 @@ export class Task21 extends Task<{}, Task21State> {
 
         return (
             <>
-                Выборка: <InputText value={alchemists} onChange={this.onAlchemistsChange.bind(this)}
-                                    placeholder="(a, b, c...)" />
+                Выборка: <InputText placeholder="(a, b, c...)" value={alchemists}
+                                    onChange={this.onAlchemistsChange.bind(this)} />
+                <ValidationIcon valid={this.alchemistsRegexp.test(alchemists)} />
             </>
         );
     }
@@ -60,7 +63,7 @@ export class Task21 extends Task<{}, Task21State> {
             .map(i => ({value: i, count: sample.filter(v => v === i).length}));
 
         const e = mean(sample);
-        const d = mean(sample.map(v => Math.pow(v - e, 2)));
+        const d = variance(sample, e);
         const m = sample.length % 2 === 0
             ? (sample[sample.length / 2] + sample[sample.length / 2]) / 2
             : sample[(sample.length + 1) / 2];

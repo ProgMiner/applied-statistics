@@ -7,6 +7,7 @@ import isEqual from 'lodash/isEqual';
 
 import { Distribution, DistributionType, distributionTypesSelectItems } from '../../utils/distribution';
 import { filterObject } from '../../utils/filterObject';
+import { ValidationIcon } from '../ValidationIcon/ValidationIcon';
 
 export interface DistributionSelectorProps {
 
@@ -80,7 +81,13 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         const { distributionType, distributionParams } = this.state;
 
         let newDistribution: Distribution | undefined;
-        const numericParams = mapValues(filterObject(distributionParams, Boolean), Number);
+        const numericParams = mapValues(
+            filterObject(
+                mapValues(distributionParams, s => s ? s.trim() : undefined),
+                Boolean
+            ),
+            Number
+        );
         switch (distributionType) {
             case DistributionType.BERNOULLI:
                 if (!isNaN(numericParams['p'])) {
@@ -197,18 +204,26 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         }
 
         const paramsComponents: JSX.Element[] = params
-            .map(param => (
-                <React.Fragment key={param.name}>
-                    <strong>{param.name}</strong> =
-                    <InputText value={distributionParams ? distributionParams[param.field] ?? '' : ''}
-                               onChange={e => this.onDistributionParamChange(param.field, e)} /><br />
-                </React.Fragment>
-            ));
+            .map(param => {
+                const value = distributionParams[param.field];
+
+                return (
+                    <React.Fragment key={param.name}>
+                        <strong>{param.name}</strong> =
+                        <InputText value={value ?? ''} onChange={e => this.onDistributionParamChange(param.field, e)}/>
+                        <ValidationIcon valid={!!value?.trim() && !isNaN(+value)}/>
+                        <br/>
+                    </React.Fragment>
+                );
+            });
 
         return (
             <>
-                Распределение: <Dropdown value={this.state.distributionType} options={distributionTypesSelectItems}
-                                         onChange={this.onDistributionTypeChange.bind(this)} /><br />
+                Распределение:
+                <Dropdown value={this.state.distributionType} options={distributionTypesSelectItems}
+                          onChange={this.onDistributionTypeChange.bind(this)} />
+                <ValidationIcon valid={!!this.state.distributionType} />
+                <br />
 
                 {paramsComponents}
             </>

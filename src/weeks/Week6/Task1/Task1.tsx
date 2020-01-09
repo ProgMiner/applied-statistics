@@ -1,9 +1,10 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
 
+import { Task } from '../../../components/Task/Task';
 import { Distribution, DistributionType } from '../../../utils/distribution';
 import { DistributionSelector } from '../../../components/DistributionSelector/DistributionSelector';
-import { Task } from '../../../components/Task/Task';
+import { ValidationIcon } from '../../../components/ValidationIcon/ValidationIcon';
 
 interface Task1State {
 
@@ -46,18 +47,29 @@ export class Task1 extends Task<{}, Task1State> {
         const numericN = n ? +n : undefined;
         const numericRandomSeed = randomSeed ? +randomSeed : undefined;
 
-        return numericN !== undefined && !isNaN(numericN) && distribution !== undefined &&
+        return numericN !== undefined && !isNaN(numericN) && !!distribution &&
             numericRandomSeed !== undefined && !isNaN(numericRandomSeed);
     }
 
     protected renderParameters() {
         const { n, distribution, randomSeed } = this.state;
 
+        const numericN = n ? +n : undefined;
+        const numericRandomSeed = randomSeed ? +randomSeed : undefined;
+
         return (
             <>
-                Объём (<strong>n</strong> =): <InputText value={n} onChange={this.onNChange.bind(this)} /><br />
-                <DistributionSelector normalSigmaSquare={false} value={distribution} onChange={this.onDistributionChange.bind(this)} />
-                <strong>random seed</strong> = <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
+                Объём (<strong>n</strong> =):
+                <InputText value={n} onChange={this.onNChange.bind(this)} />
+                <ValidationIcon valid={numericN !== undefined && !isNaN(numericN)} />
+                <br />
+
+                <DistributionSelector normalSigmaSquare={false} value={distribution}
+                                      onChange={this.onDistributionChange.bind(this)} />
+
+                <strong>random seed</strong> =
+                <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
+                <ValidationIcon valid={numericRandomSeed !== undefined && !isNaN(numericRandomSeed)} />
             </>
         );
     }
