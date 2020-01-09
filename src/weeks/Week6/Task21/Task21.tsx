@@ -56,10 +56,8 @@ export class Task21 extends Task<{}, Task21State> {
             .replace(/,/g, ' ').replace(/ +/g, ' ')
             .split(' ').map(v => Number(v.trim())).sort((a, b) => a - b);
 
-        const counts: Array<CountObject> = [];
-        for (let i = 1; i < 7; ++i) {
-            counts.push({value: i, count: sample.filter(v => v === i).length});
-        }
+        const counts: Array<CountObject> = [1, 2, 3, 4, 5, 6]
+            .map(i => ({value: i, count: sample.filter(v => v === i).length}));
 
         const e = mean(sample);
         const d = mean(sample.map(v => Math.pow(v - e, 2)));
@@ -68,7 +66,8 @@ export class Task21 extends Task<{}, Task21State> {
             : sample[(sample.length + 1) / 2];
 
         const maxCount = maxBy(counts, v => v.count)?.count;
-        const mode = counts.filter(v => v.count === maxCount).map(v => v.value).sort((a, b) => a - b)[0];
+        const mode = counts.filter(v => v.count === maxCount)
+            .map(v => v.value).sort((a, b) => a - b)[0];
 
         return (
             <>

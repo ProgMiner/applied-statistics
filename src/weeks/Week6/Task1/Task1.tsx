@@ -111,7 +111,7 @@ print(sum(sample)/len(sample))
 
         return (
             <>
-                Выполните следущий код в Python-интерпретаторе (например, на сайте <a href="https://repl.it" target="_blank" rel="noopener noreferrer">https://repl.it</a>):
+                Выполните следущий код в Python-интерпретаторе (например, на сайте <a href="https://repl.it" target="_blank" rel="noopener noreferrer">repl.it</a>):
 
                 <pre>{code}</pre>
 
