@@ -21,7 +21,7 @@ export class Task61 extends Task<{}, Task61State> {
         this.setState({
             ...this.state,
 
-            n: e.currentTarget.value
+            n: e.currentTarget.value.trim()
         });
     }
 
@@ -33,7 +33,7 @@ export class Task61 extends Task<{}, Task61State> {
         this.setState({
             ...this.state,
 
-            randomSeed: e.currentTarget.value
+            randomSeed: e.currentTarget.value.trim()
         });
     }
 

@@ -1,4 +1,4 @@
-export function quantile(level: number, sample: number[]) {
+export function sampleQuantile(level: number, sample: number[]) {
     const index = sample.length * level;
 
     const roundedIndex = Math.floor(index);

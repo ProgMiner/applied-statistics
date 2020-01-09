@@ -8,7 +8,7 @@ import { Task } from '../../components/Task/Task';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { sampleVariance } from '../../utils/sampleVariance';
 import { median } from '../../utils/median';
-import { quantile } from '../../utils/quantile';
+import { sampleQuantile } from '../../utils/sampleQuantile';
 
 const citySelectItems: SelectItem[] = [
     { label: 'Алтайский край', value: 0 },
@@ -121,7 +121,7 @@ export class Task7 extends Task<{}, Task7State> {
     };
 
     private checkIndices(indices: [string, string, string]) {
-        return indices.map(v => v.trim()).filter(Boolean).map(Number).filter(v => !isNaN(v)).length === 3;
+        return indices.filter(Boolean).map(Number).filter(v => !isNaN(v)).length === 3;
     }
 
     protected checkParameters(): boolean {
@@ -142,7 +142,7 @@ export class Task7 extends Task<{}, Task7State> {
         return (e: React.FormEvent<HTMLInputElement>) => {
             const indices = [...this.state[name]];
 
-            indices[i] = e.currentTarget.value;
+            indices[i] = e.currentTarget.value.trim();
             this.setState({ ...this.state, [name]: indices });
         }
     }
@@ -240,11 +240,11 @@ export class Task7 extends Task<{}, Task7State> {
                 <br />
 
                 Квантиль уровня <strong>0.25</strong>:&nbsp;
-                <InputText readOnly value={quantile(0.25, sample)} />
+                <InputText readOnly value={sampleQuantile(0.25, sample)} />
                 <br />
 
                 Квантиль уровня <strong>0.75</strong>:&nbsp;
-                <InputText readOnly value={quantile(0.75, sample)} />
+                <InputText readOnly value={sampleQuantile(0.75, sample)} />
             </>
         );
     }

@@ -5,6 +5,7 @@ import { Week7 } from '../../weeks/Week7/Week7';
 
 import './App.css';
 import { Panel } from 'primereact/panel';
+import { Week8 } from '../../weeks/Week8/Week8';
 
 export class App extends React.Component {
 
@@ -20,12 +21,13 @@ export class App extends React.Component {
                     <br />
 
                     <a href="https://my.qiwi.com/Erydan-DMVuYwfjtW" target="_blank" rel="noopener noreferrer">
-                        <small>(Донатить сюда)</small>
+                        <small>(донатить сюда)</small>
                     </a>
                 </Panel>
 
                 <Week6 />
                 <Week7 />
+                <Week8 />
             </div>
         );
     }

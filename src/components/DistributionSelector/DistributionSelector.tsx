@@ -1,7 +1,6 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
-import { SelectItem } from 'primereact/api';
 import mapValues from 'lodash/mapValues';
 import isEqual from 'lodash/isEqual';
 
@@ -57,11 +56,11 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         }
     }
 
-    private onDistributionTypeChange(value: SelectItem) {
+    private onDistributionTypeChange(e: { value: DistributionType }) {
         this.setState({
             ...this.state,
 
-            distributionType: value.value as DistributionType
+            distributionType: e.value as DistributionType
         });
     }
 
@@ -72,7 +71,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
             distributionParams: {
                 ...this.state.distributionParams,
 
-                [param]: event.currentTarget.value
+                [param]: event.currentTarget.value.trim()
             }
         });
     }

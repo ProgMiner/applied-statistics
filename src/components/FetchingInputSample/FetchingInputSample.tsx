@@ -55,7 +55,7 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
                         const sampleText = await response.text();
                         const sample = sampleText.split('\n')
                             .map(s => s.trim()).filter(Boolean).map(Number)
-                            .filter(v => !isNaN(v));
+                            .filter(v => !isNaN(v)).sort((a, b) => a - b);
 
                         if (sample.length > 0) {
                             if (this.state.url === url) {
@@ -80,7 +80,7 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
         this.setState({
             ...this.state,
 
-            url: e.currentTarget.value,
+            url: e.currentTarget.value.trim(),
             loading: true
         });
     }
