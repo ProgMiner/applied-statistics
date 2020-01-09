@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Week6 } from '../../weeks/Week6/Week6';
+import { Week7 } from '../../weeks/Week7/Week7';
 
 import './App.css';
 
@@ -10,6 +11,7 @@ export class App extends React.Component {
         return (
             <div className="App">
                 <Week6 />
+                <Week7 />
             </div>
         );
     }

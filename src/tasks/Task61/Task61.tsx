@@ -1,36 +1,32 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
 
-import { Task } from '../../../components/Task/Task';
-import { Distribution, DistributionType } from '../../../utils/distribution';
-import { DistributionSelector } from '../../../components/DistributionSelector/DistributionSelector';
-import { ValidationIcon } from '../../../components/ValidationIcon/ValidationIcon';
+import { Task } from '../../components/Task/Task';
+import { Distribution, DistributionType } from '../../utils/distribution';
+import { DistributionSelector } from '../../components/DistributionSelector/DistributionSelector';
+import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 
-interface Task1State {
+interface Task61State {
 
     n: string;
     distribution?: Distribution;
     randomSeed: string;
 }
 
-export class Task1 extends Task<{}, Task1State> {
+export class Task61 extends Task<{}, Task61State> {
 
-    state: Task1State = { n: '', randomSeed: '' };
+    state: Task61State = { n: '', randomSeed: '' };
 
     private onNChange(e: React.FormEvent<HTMLInputElement>) {
         this.setState({
             ...this.state,
 
             n: e.currentTarget.value
-        })
+        });
     }
 
-    private onDistributionChange(value?: Distribution) {
-        this.setState({
-            ...this.state,
-
-            distribution: value
-        });
+    private onDistributionChange(distribution?: Distribution) {
+        this.setState({ ...this.state, distribution });
     }
 
     private onRandomSeedChange(e: React.FormEvent<HTMLInputElement>) {
@@ -38,7 +34,7 @@ export class Task1 extends Task<{}, Task1State> {
             ...this.state,
 
             randomSeed: e.currentTarget.value
-        })
+        });
     }
 
     protected checkParameters(): boolean {
@@ -59,7 +55,7 @@ export class Task1 extends Task<{}, Task1State> {
 
         return (
             <>
-                Объём (<strong>n</strong> =):
+                Объём (<strong>n</strong> =):&nbsp;
                 <InputText value={n} onChange={this.onNChange.bind(this)} />
                 <ValidationIcon valid={numericN !== undefined && !isNaN(numericN)} />
                 <br />
@@ -67,7 +63,7 @@ export class Task1 extends Task<{}, Task1State> {
                 <DistributionSelector normalSigmaSquare={false} value={distribution}
                                       onChange={this.onDistributionChange.bind(this)} />
 
-                <strong>random seed</strong> =
+                <strong>random seed</strong> =&nbsp;
                 <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
                 <ValidationIcon valid={numericRandomSeed !== undefined && !isNaN(numericRandomSeed)} />
             </>
@@ -85,6 +81,7 @@ export class Task1 extends Task<{}, Task1State> {
 import numpy as np
 np.random.seed(${randomSeed})
 `;
+
         switch (distribution.type) {
             case DistributionType.BERNOULLI:
                 code += `sample = np.random.binomial(1, ${distribution.params.p}, ${n})`;

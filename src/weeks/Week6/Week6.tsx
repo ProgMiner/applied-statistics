@@ -2,9 +2,9 @@ import React from 'react';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
 import { Week } from '../../components/Week/Week';
-import { Task1 } from './Task1/Task1';
-import { Task21 } from './Task21/Task21';
-import { Task22 } from './Task21/Task22';
+import { Task61 } from '../../tasks/Task61/Task61';
+import { Task621 } from '../../tasks/Task621/Task621';
+import { Task622 } from '../../tasks/Task622/Task622';
 
 export class Week6 extends Week {
 
@@ -13,10 +13,10 @@ export class Week6 extends Week {
     protected renderContent() {
         return (
             <Accordion multiple>
-                <AccordionTab header="Упражнение 1 (Python)"><Task1 /></AccordionTab>
-                <AccordionTab header="Упражнение 2. Задача 1"><Task21 /></AccordionTab>
-                <AccordionTab header="Упражнение 2. Задача 2"><Task22 /></AccordionTab>
+                <AccordionTab header="Упражнение 1 (Python)"><Task61 /></AccordionTab>
+                <AccordionTab header="Упражнение 2. Задача 1"><Task621 /></AccordionTab>
+                <AccordionTab header="Упражнение 2. Задача 2"><Task622 /></AccordionTab>
             </Accordion>
-        )
+        );
     }
 }

@@ -3,11 +3,12 @@ import { InputText } from 'primereact/inputtext';
 import maxBy from 'lodash/maxBy';
 import mean from 'lodash/mean';
 
-import { Task } from '../../../components/Task/Task';
-import { ValidationIcon } from '../../../components/ValidationIcon/ValidationIcon';
-import { variance } from '../../../utils/dispersion';
+import { Task } from '../../components/Task/Task';
+import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
+import { sampleVariance } from '../../utils/sampleVariance';
+import { median } from '../../utils/median';
 
-interface Task21State {
+interface Task621State {
 
     alchemists: string;
 }
@@ -18,18 +19,18 @@ interface CountObject {
     count: number;
 }
 
-export class Task21 extends Task<{}, Task21State> {
+export class Task621 extends Task<{}, Task621State> {
 
     private alchemistsRegexp = /^( *\()?( *\d+( *,)?)* *\d+? *(\) *)?$/;
 
-    state: Task21State = { alchemists: '' };
+    state: Task621State = { alchemists: '' };
 
     private onAlchemistsChange(e: React.FormEvent<HTMLInputElement>) {
         this.setState({
             ...this.state,
 
             alchemists: e.currentTarget.value
-        })
+        });
     }
 
     protected checkParameters(): boolean {
@@ -56,17 +57,14 @@ export class Task21 extends Task<{}, Task21State> {
         }
 
         const sample = alchemists.replace(/[()]/g, '').trim()
-            .replace(/,/g, ' ').replace(/ +/g, ' ')
-            .split(' ').map(v => Number(v.trim())).sort((a, b) => a - b);
+            .split(/[,\s]+/).map(Number).sort((a, b) => a - b);
 
-        const counts: Array<CountObject> = [1, 2, 3, 4, 5, 6]
+        const counts: CountObject[] = [1, 2, 3, 4, 5, 6]
             .map(i => ({value: i, count: sample.filter(v => v === i).length}));
 
         const e = mean(sample);
-        const d = variance(sample, e);
-        const m = sample.length % 2 === 0
-            ? (sample[sample.length / 2] + sample[sample.length / 2]) / 2
-            : sample[(sample.length + 1) / 2];
+        const d = sampleVariance(sample, e);
+        const m = median(sample);
 
         const maxCount = maxBy(counts, v => v.count)?.count;
         const mode = counts.filter(v => v.count === maxCount)
@@ -80,7 +78,7 @@ export class Task21 extends Task<{}, Task21State> {
                         <tr key={String(f)}>
                             {counts.filter(f).map(v => (
                                 <td key={v.value}>
-                                    P(&#958;<sup>*</sup> = {v.value}) =
+                                    P(&#958;<sup>*</sup> = {v.value}) =&nbsp;
                                     <InputText readOnly value={v.count === 0 ? '0' : `${v.count} / ${sample.length}`} />
                                 </td>
                             ))}

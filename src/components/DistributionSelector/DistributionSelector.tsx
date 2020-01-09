@@ -80,7 +80,6 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
     private onDistributionChange() {
         const { distributionType, distributionParams } = this.state;
 
-        let newDistribution: Distribution | undefined;
         const numericParams = mapValues(
             filterObject(
                 mapValues(distributionParams, s => s ? s.trim() : undefined),
@@ -88,13 +87,15 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
             ),
             Number
         );
+
+        let newDistribution: Distribution | undefined;
         switch (distributionType) {
             case DistributionType.BERNOULLI:
                 if (!isNaN(numericParams['p'])) {
                     newDistribution = {
                         type: distributionType,
                         params: { p: numericParams['p'] }
-                    }
+                    };
                 }
                 break;
 
@@ -106,7 +107,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                             n: numericParams['n'],
                             p: numericParams['p']
                         }
-                    }
+                    };
                 }
                 break;
 
@@ -115,7 +116,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                     newDistribution = {
                         type: distributionType,
                         params: { p: numericParams['p'] }
-                    }
+                    };
                 }
                 break;
 
@@ -124,7 +125,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                     newDistribution = {
                         type: distributionType,
                         params: { l: numericParams['l'] }
-                    }
+                    };
                 }
                 break;
 
@@ -136,7 +137,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                             a: numericParams['a'],
                             b: numericParams['b']
                         }
-                    }
+                    };
                 }
                 break;
 
@@ -145,7 +146,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                     newDistribution = {
                         type: distributionType,
                         params: { l: numericParams['l'] }
-                    }
+                    };
                 }
                 break;
 
@@ -157,7 +158,7 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
                             a: numericParams['a'],
                             d: numericParams['d']
                         }
-                    }
+                    };
                 }
                 break;
         }
@@ -209,17 +210,17 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
 
                 return (
                     <React.Fragment key={param.name}>
-                        <strong>{param.name}</strong> =
-                        <InputText value={value ?? ''} onChange={e => this.onDistributionParamChange(param.field, e)}/>
-                        <ValidationIcon valid={!!value?.trim() && !isNaN(+value)}/>
-                        <br/>
+                        <strong>{param.name}</strong> =&nbsp;
+                        <InputText value={value ?? ''} onChange={e => this.onDistributionParamChange(param.field, e)} />
+                        <ValidationIcon valid={!!value?.trim() && !isNaN(+value)} />
+                        <br />
                     </React.Fragment>
                 );
             });
 
         return (
             <>
-                Распределение:
+                Распределение:&nbsp;
                 <Dropdown value={this.state.distributionType} options={distributionTypesSelectItems}
                           onChange={this.onDistributionTypeChange.bind(this)} />
                 <ValidationIcon valid={!!this.state.distributionType} />

@@ -36,15 +36,13 @@ export abstract class Task<P = {}, S = {}> extends React.Component<React.PropsWi
         prevProps: Readonly<React.PropsWithChildren<P>>,
         prevState: Readonly<S & TaskState>,
         snapshot?: any
-    ): void {
+    ) {
         if (!isEqual(omit(this.state, 'answer'), omit(prevState, 'answer')) && this.checkParameters()) {
             (async () => {
                 const answerPromise = this.answerPromise = this.renderAnswer();
-
                 this.setState({ ...this.state, answer: undefined });
 
                 const answer = await answerPromise;
-
                 if (this.answerPromise === answerPromise) {
                     this.setState({ ...this.state, answer });
                 }
@@ -57,11 +55,13 @@ export abstract class Task<P = {}, S = {}> extends React.Component<React.PropsWi
             <div className={this.taskClassName}>
                 {this.renderParameters()}
 
-                {this.checkParameters() && (<>
-                    <hr />
+                {this.checkParameters() && (
+                    <>
+                        <hr />
 
-                    {this.renderLoading()}
-                </>)}
+                        {this.renderLoading()}
+                        </>
+                )}
             </div>
         );
     }

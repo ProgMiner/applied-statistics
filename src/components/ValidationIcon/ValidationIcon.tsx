@@ -13,6 +13,7 @@ export class ValidationIcon extends React.Component<ValidationIconProps> {
     static defaultProps: ValidationIconProps = {
 
         clickable: false,
+
         onClick() {}
     };
 

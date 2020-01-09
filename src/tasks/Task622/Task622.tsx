@@ -2,22 +2,22 @@ import React from 'react';
 import mean from 'lodash/mean';
 import { InputText } from 'primereact/inputtext';
 
-import { Task } from '../../../components/Task/Task';
-import { Distribution, DistributionType } from '../../../utils/distribution';
-import { DistributionSelector } from '../../../components/DistributionSelector/DistributionSelector';
-import { FetchingInputSample } from '../../../components/FetchingInputSample/FetchingInputSample';
-import { variance } from '../../../utils/dispersion';
+import { Task } from '../../components/Task/Task';
+import { Distribution, DistributionType } from '../../utils/distribution';
+import { DistributionSelector } from '../../components/DistributionSelector/DistributionSelector';
+import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
+import { sampleVariance } from '../../utils/sampleVariance';
 
-interface Task22State {
+interface Task622State {
 
     sample10?: number[];
     sample10000?: number[];
     distribution?: Distribution;
 }
 
-export class Task22 extends Task<{}, Task22State> {
+export class Task622 extends Task<{}, Task622State> {
 
-    state: Task22State = {};
+    state: Task622State = {};
 
     private onSample10Change(sample10?: number[]) {
         this.setState({...this.state, sample10});
@@ -46,11 +46,11 @@ export class Task22 extends Task<{}, Task22State> {
 
         return (
             <>
-                Выборка объёма <strong>n = 10</strong>:
+                Выборка объёма <strong>n = 10</strong>:&nbsp;
                 <FetchingInputSample onChange={this.onSample10Change.bind(this)} />
                 <br />
 
-                Выборка объёма <strong>n = 10000</strong>:
+                Выборка объёма <strong>n = 10000</strong>:&nbsp;
                 <FetchingInputSample onChange={this.onSample10000Change.bind(this)} />
                 <br />
 
@@ -81,13 +81,13 @@ export class Task22 extends Task<{}, Task22State> {
 
         const e10 = mean(sample10);
         const e10000 = mean(sample10000);
-        const d10 = variance(sample10, e10);
-        const d10000 = variance(sample10000, e10000);
+        const d10 = sampleVariance(sample10, e10);
+        const d10000 = sampleVariance(sample10000, e10000);
 
         let output: (v: number, e: number, d: number) => React.ReactNode;
         switch (distribution.type) {
             case DistributionType.BERNOULLI:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     'p',
                     v,
                     e,
@@ -98,7 +98,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.BINOMIAL:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     'p',
                     v,
                     e / distribution.params.n,
@@ -109,7 +109,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.GEOMETRIC:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     'p',
                     v,
                     1 / e,
@@ -120,7 +120,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.POISSON:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     '\u03BB',
                     v,
                     e,
@@ -131,7 +131,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.UNIFORM:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     'a',
                     v,
                     2 * e - distribution.params.b,
@@ -142,7 +142,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.EXPONENTIAL:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     '\u03BB',
                     v,
                     1 / e,
@@ -153,7 +153,7 @@ export class Task22 extends Task<{}, Task22State> {
                 break;
 
             case DistributionType.NORMAL:
-                output = (v, e, d) => Task22.output(
+                output = (v, e, d) => Task622.output(
                     'a',
                     v,
                     e,

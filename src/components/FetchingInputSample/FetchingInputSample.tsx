@@ -33,7 +33,7 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
         prevProps: Readonly<FetchingInputSampleProps>,
         prevState: Readonly<FetchingInputSampleState>,
         snapshot?: any
-    ): void {
+    ) {
         if (!isEqual(omit(this.state, ['loading', 'sample']), omit(prevState, ['loading', 'sample']))) {
             this.reload();
         }
