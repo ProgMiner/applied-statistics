@@ -275,7 +275,7 @@ export class Task9 extends Task<{}, Task9State> {
 
         switch (distributionType) {
             case DistributionType.BINOMIAL:
-                return this.renderBinomialAnswer(avg, quantile, sample.length);
+                return this.renderBinomialAnswer(avg, quantile, sqrtN);
 
             case DistributionType.GEOMETRIC:
                 return this.renderGeometricAnswer(avg, quantile, sqrtN);
