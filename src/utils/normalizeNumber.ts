@@ -1,3 +1,4 @@
+
 export function normalizeNumber(n: number, scale: number = 15) {
     const c = 10 ** scale;
 

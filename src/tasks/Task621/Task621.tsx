@@ -6,8 +6,8 @@ import mean from 'lodash/mean';
 import { Task } from '../../components/Task/Task';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { sampleVariance } from '../../utils/sampleVariance';
-import { median } from '../../utils/median';
 import { normalizeNumber } from '../../utils/normalizeNumber';
+import { median } from '../../utils/median';
 
 interface Task621State {
 

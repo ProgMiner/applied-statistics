@@ -10,6 +10,7 @@ import { sampleVariance } from '../../utils/sampleVariance';
 import { median } from '../../utils/median';
 import { sampleQuantile } from '../../utils/sampleQuantile';
 import { normalizeNumber } from '../../utils/normalizeNumber';
+import { verifyInteger } from '../../utils/verifyInteger';
 
 const citySelectItems: SelectItem[] = [
     { label: 'Алтайский край', value: 0 },
@@ -121,14 +122,15 @@ export class Task7 extends Task<{}, Task7State> {
         intervalIndices: ['', '', '']
     };
 
-    private checkIndices(indices: [string, string, string]) {
-        return indices.filter(Boolean).map(Number).filter(v => !isNaN(v)).length === 3;
+    private checkIndices(indices: [string, string, string], max: number = 10) {
+        return indices.filter(verifyInteger).map(Number).filter(v => v > 0 && v <= max).length === 3;
     }
 
     protected checkParameters(): boolean {
-        const { sampleIndices, intervalIndices } = this.state;
+        const { cities, sampleIndices, intervalIndices } = this.state;
 
-        return this.checkIndices(sampleIndices) && this.checkIndices(intervalIndices);
+        return this.checkIndices(sampleIndices, avgSalary.length - cities.length) &&
+            this.checkIndices(intervalIndices);
     }
 
     private onCitiesChange(e: { value: number[] }) {
@@ -163,7 +165,7 @@ export class Task7 extends Task<{}, Task7State> {
                     <InputText key={i} value={sampleIndices[i]} onChange={this.onIndexChange('sampleIndices', i)} />
                 ))}
 
-                <ValidationIcon valid={this.checkIndices(sampleIndices)} />
+                <ValidationIcon valid={this.checkIndices(sampleIndices, avgSalary.length - cities.length)} />
                 <br />
 
                 Введите номера необходимых интервалов (<strong>A</strong>):&nbsp;

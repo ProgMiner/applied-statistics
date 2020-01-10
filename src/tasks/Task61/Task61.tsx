@@ -5,6 +5,7 @@ import { Task } from '../../components/Task/Task';
 import { Distribution, DistributionType } from '../../utils/distribution';
 import { InputDistribution } from '../../components/InputDistribution/InputDistribution';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
+import { verifyNumber } from '../../utils/verifyNumber';
 
 interface Task61State {
 
@@ -40,24 +41,17 @@ export class Task61 extends Task<{}, Task61State> {
     protected checkParameters(): boolean {
         const { n, distribution, randomSeed } = this.state;
 
-        const numericN = n ? +n : undefined;
-        const numericRandomSeed = randomSeed ? +randomSeed : undefined;
-
-        return numericN !== undefined && !isNaN(numericN) && !!distribution &&
-            numericRandomSeed !== undefined && !isNaN(numericRandomSeed);
+        return verifyNumber(n) && distribution !== undefined && verifyNumber(randomSeed);
     }
 
     protected renderParameters() {
         const { n, distribution, randomSeed } = this.state;
 
-        const numericN = n ? +n : undefined;
-        const numericRandomSeed = randomSeed ? +randomSeed : undefined;
-
         return (
             <>
                 Объём (<strong>n</strong> =):&nbsp;
                 <InputText value={n} onChange={this.onNChange.bind(this)} />
-                <ValidationIcon valid={numericN !== undefined && !isNaN(numericN)} />
+                <ValidationIcon valid={verifyNumber(n)} />
                 <br />
 
                 <InputDistribution normalSigmaSquare={false} value={distribution}
@@ -65,7 +59,7 @@ export class Task61 extends Task<{}, Task61State> {
 
                 <strong>random seed</strong> =&nbsp;
                 <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
-                <ValidationIcon valid={numericRandomSeed !== undefined && !isNaN(numericRandomSeed)} />
+                <ValidationIcon valid={verifyNumber(randomSeed)} />
             </>
         );
     }
@@ -73,7 +67,7 @@ export class Task61 extends Task<{}, Task61State> {
     protected async renderAnswer() {
         const { n, distribution, randomSeed } = this.state;
 
-        if (!n || !distribution || !randomSeed) {
+        if (distribution === undefined) {
             return;
         }
 

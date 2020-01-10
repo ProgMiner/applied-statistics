@@ -7,35 +7,39 @@ import { Distribution, DistributionType } from '../../utils/distribution';
 import { filterObject } from '../../utils/filterObject';
 import { ValidationIcon } from '../ValidationIcon/ValidationIcon';
 import { InputDistributionType } from '../InputDistributionType/InputDistributionType';
+import { verifyNumber } from '../../utils/verifyNumber';
+import { verifyInteger } from '../../utils/verifyInteger';
 
-export interface DistributionSelectorProps {
+export interface InputDistributionProps {
 
     value?: Distribution;
     normalSigmaSquare: boolean;
+    exclude: DistributionType[];
 
     onChange(value?: Distribution): void;
 }
 
-interface DistributionSelectorState {
+interface InputDistributionState {
 
     distributionType?: DistributionType;
-    distributionParams: { [key: string]: string | undefined };
+    distributionParams: { [key: string]: string };
 }
 
-export class InputDistribution extends React.Component<DistributionSelectorProps, DistributionSelectorState> {
+export class InputDistribution extends React.Component<InputDistributionProps, InputDistributionState> {
 
-    static defaultProps: DistributionSelectorProps = {
+    static defaultProps: InputDistributionProps = {
 
         normalSigmaSquare: true,
+        exclude: [],
 
         onChange() {}
     };
 
-    state: DistributionSelectorState = { distributionParams: {} };
+    state: InputDistributionState = { distributionParams: {} };
 
     componentDidUpdate(
-        prevProps: Readonly<DistributionSelectorProps>,
-        prevState: Readonly<DistributionSelectorState>,
+        prevProps: Readonly<InputDistributionProps>,
+        prevState: Readonly<InputDistributionState>,
         snapshot?: any
     ) {
         if (!isEqual(this.props.value, prevProps.value) && this.props.value) {
@@ -60,98 +64,93 @@ export class InputDistribution extends React.Component<DistributionSelectorProps
         this.setState({ ...this.state, distributionType });
     }
 
-    private onDistributionParamChange(param: string, event: React.FormEvent<HTMLInputElement>) {
-        this.setState({
-            ...this.state,
+    private onDistributionParamChange(param: string) {
+        return (e: React.FormEvent<HTMLInputElement>) => {
+            this.setState({
+                ...this.state,
 
-            distributionParams: {
-                ...this.state.distributionParams,
+                distributionParams: {
+                    ...this.state.distributionParams,
 
-                [param]: event.currentTarget.value.trim()
-            }
-        });
+                    [param]: e.currentTarget.value.trim()
+                }
+            });
+        };
     }
 
     private onDistributionChange() {
         const { distributionType, distributionParams } = this.state;
 
-        const numericParams = mapValues(
-            filterObject(
-                mapValues(distributionParams, s => s ? s.trim() : undefined),
-                Boolean
-            ),
-            Number
-        );
-
+        const numericParams = mapValues(filterObject(distributionParams, verifyNumber), Number);
         let newDistribution: Distribution | undefined;
         switch (distributionType) {
             case DistributionType.BERNOULLI:
-                if (!isNaN(numericParams['p'])) {
+                if (numericParams.p !== undefined) {
                     newDistribution = {
                         type: distributionType,
-                        params: { p: numericParams['p'] }
+                        params: { p: numericParams.p }
                     };
                 }
                 break;
 
             case DistributionType.BINOMIAL:
-                if (!isNaN(numericParams['n']) && !isNaN(numericParams['p'])) {
+                if (numericParams.n !== undefined && numericParams.p !== undefined) {
                     newDistribution = {
                         type: distributionType,
                         params: {
-                            n: numericParams['n'],
-                            p: numericParams['p']
+                            n: numericParams.n,
+                            p: numericParams.p
                         }
                     };
                 }
                 break;
 
             case DistributionType.GEOMETRIC:
-                if (!isNaN(numericParams['p'])) {
+                if (numericParams.p !== undefined) {
                     newDistribution = {
                         type: distributionType,
-                        params: { p: numericParams['p'] }
+                        params: { p: numericParams.p }
                     };
                 }
                 break;
 
             case DistributionType.POISSON:
-                if (!isNaN(numericParams['l'])) {
+                if (numericParams.l !== undefined) {
                     newDistribution = {
                         type: distributionType,
-                        params: { l: numericParams['l'] }
+                        params: { l: numericParams.l }
                     };
                 }
                 break;
 
             case DistributionType.UNIFORM:
-                if (!isNaN(numericParams['a']) && !isNaN(numericParams['b'])) {
+                if (numericParams.a !== undefined && numericParams.b !== undefined) {
                     newDistribution = {
                         type: distributionType,
                         params: {
-                            a: numericParams['a'],
-                            b: numericParams['b']
+                            a: numericParams.a,
+                            b: numericParams.b
                         }
                     };
                 }
                 break;
 
             case DistributionType.EXPONENTIAL:
-                if (!isNaN(numericParams['l'])) {
+                if (numericParams.l !== undefined) {
                     newDistribution = {
                         type: distributionType,
-                        params: { l: numericParams['l'] }
+                        params: { l: numericParams.l }
                     };
                 }
                 break;
 
             case DistributionType.NORMAL:
-                if (!isNaN(numericParams['a']) && !isNaN(numericParams['d'])) {
+                if (numericParams.a !== undefined && numericParams.d !== undefined) {
                     newDistribution = {
                         type: distributionType,
                         params: {
-                            a: numericParams['a'],
-                            d: numericParams['d']
+                            a: numericParams.a,
+                            d: numericParams.d
                         }
                     };
                 }
@@ -162,52 +161,52 @@ export class InputDistribution extends React.Component<DistributionSelectorProps
     }
 
     render() {
-        const { normalSigmaSquare } = this.props;
+        const { normalSigmaSquare, exclude } = this.props;
         const { distributionType, distributionParams } = this.state;
 
-        const params: { name: string, field: string }[] = [];
+        const params: { name: string, field: string, integer?: true }[] = [];
         switch (distributionType) {
             case DistributionType.BERNOULLI:
-                params.push({ name: 'p', field: 'p'});
+                params.push({ name: 'p', field: 'p' });
                 break;
 
             case DistributionType.BINOMIAL:
-                params.push({ name: 'n', field: 'n'});
-                params.push({ name: 'p', field: 'p'});
+                params.push({ name: 'n', field: 'n', integer: true });
+                params.push({ name: 'p', field: 'p' });
                 break;
 
             case DistributionType.GEOMETRIC:
-                params.push({ name: 'p', field: 'p'});
+                params.push({ name: 'p', field: 'p' });
                 break;
 
             case DistributionType.POISSON:
-                params.push({ name: '\u03BB', field: 'l'});
+                params.push({ name: '\u03BB', field: 'l' });
                 break;
 
             case DistributionType.UNIFORM:
-                params.push({ name: 'a', field: 'a'});
-                params.push({ name: 'b', field: 'b'});
+                params.push({ name: 'a', field: 'a' });
+                params.push({ name: 'b', field: 'b' });
                 break;
 
             case DistributionType.EXPONENTIAL:
-                params.push({ name: '\u03BB', field: 'l'});
+                params.push({ name: '\u03BB', field: 'l' });
                 break;
 
             case DistributionType.NORMAL:
-                params.push({ name: 'a', field: 'a'});
-                params.push({ name: '\u03C3' + (normalSigmaSquare ? '\u00B2' : ''), field: 'd'});
+                params.push({ name: 'a', field: 'a' });
+                params.push({ name: '\u03C3' + (normalSigmaSquare ? '\u00B2' : ''), field: 'd' });
                 break;
         }
 
         const paramsComponents: JSX.Element[] = params
             .map(param => {
-                const value = distributionParams[param.field];
+                const value = distributionParams[param.field] ?? '';
 
                 return (
                     <React.Fragment key={param.name}>
                         <strong>{param.name}</strong> =&nbsp;
-                        <InputText value={value ?? ''} onChange={e => this.onDistributionParamChange(param.field, e)} />
-                        <ValidationIcon valid={!!value?.trim() && !isNaN(+value)} />
+                        <InputText value={value} onChange={this.onDistributionParamChange(param.field)} />
+                        <ValidationIcon valid={param.integer ? verifyInteger(value) : verifyNumber(value)} />
                         <br />
                     </React.Fragment>
                 );
@@ -216,7 +215,7 @@ export class InputDistribution extends React.Component<DistributionSelectorProps
         return (
             <>
                 Распределение:&nbsp;
-                <InputDistributionType value={this.state.distributionType}
+                <InputDistributionType exclude={exclude} value={this.state.distributionType}
                                        onChange={this.onDistributionTypeChange.bind(this)} />
                 <br />
 

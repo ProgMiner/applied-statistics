@@ -7,18 +7,19 @@ import { ValidationIcon } from '../ValidationIcon/ValidationIcon';
 
 export interface InputDistributionTypeProps {
 
-    value?: DistributionType,
+    value?: DistributionType;
+    exclude: DistributionType[];
 
     onChange(value?: DistributionType): void;
 }
 
 export class InputDistributionType extends React.Component<InputDistributionTypeProps> {
 
-    static defaultProps: InputDistributionTypeProps = { onChange() {} };
+    static defaultProps: InputDistributionTypeProps = { exclude: [], onChange() {} };
 
     private static selectItems: SelectItem[] = [
         { label: 'Бернулли', value: DistributionType.BERNOULLI },
-        { label: 'Биноминальное', value: DistributionType.BINOMIAL },
+        { label: 'Биномиальное', value: DistributionType.BINOMIAL },
         { label: 'Геометрическое', value: DistributionType.GEOMETRIC },
         { label: 'Пуассона', value: DistributionType.POISSON },
         { label: 'Равномерное', value: DistributionType.UNIFORM },
@@ -43,10 +44,12 @@ export class InputDistributionType extends React.Component<InputDistributionType
     }
 
     render() {
+        const { exclude } = this.props;
+
         return (
             <>
-                <Dropdown itemTemplate={InputDistributionType.dropdownTemplate}
-                          options={InputDistributionType.selectItems} value={this.props.value}
+                <Dropdown itemTemplate={InputDistributionType.dropdownTemplate} value={this.props.value}
+                          options={InputDistributionType.selectItems.filter(v => !exclude.includes(v.value))}
                           onChange={(e: { value: DistributionType }) => this.props.onChange(e.value)} />
                 <ValidationIcon valid={!!this.props.value} />
             </>

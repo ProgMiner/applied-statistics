@@ -1,11 +1,12 @@
+
 export function sampleQuantile(level: number, sample: number[]) {
     const index = sample.length * level;
 
-    const roundedIndex = Math.floor(index);
+    const integerIndex = Math.floor(index);
 
-    if (index !== roundedIndex) {
-        return sample[Math.floor(index)];
+    if (!Number.isInteger(index)) {
+        return sample[integerIndex];
     } else {
-        return (sample[roundedIndex - 1] + sample[roundedIndex]) / 2;
+        return (sample[integerIndex - 1] + sample[integerIndex]) / 2;
     }
 }

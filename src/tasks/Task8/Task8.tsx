@@ -8,6 +8,9 @@ import { FetchingInputSample } from '../../components/FetchingInputSample/Fetchi
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { InputDistributionType } from '../../components/InputDistributionType/InputDistributionType';
 import { normalizeNumber } from '../../utils/normalizeNumber';
+import { factorial } from '../../utils/factorial';
+import { verifyInteger } from '../../utils/verifyInteger';
+import { verifyNumber } from '../../utils/verifyNumber';
 
 interface Task8State {
 
@@ -25,19 +28,22 @@ export class Task8 extends Task<{}, Task8State> {
 
         let specificParametersCheck: boolean = true;
         switch (distributionType) {
-            case DistributionType.BERNOULLI:
             case DistributionType.BINOMIAL:
-            case DistributionType.GEOMETRIC:
-            case DistributionType.POISSON:
-                specificParametersCheck = false;
+                specificParametersCheck = verifyInteger(specificParameters.m) && +specificParameters.m > 0 &&
+                    verifyInteger(specificParameters.k) && +specificParameters.k <= +specificParameters.m;
                 break;
 
+            case DistributionType.GEOMETRIC:
+            case DistributionType.POISSON:
+                break; // TODO
+
             case DistributionType.UNIFORM:
-                specificParametersCheck = !!specificParameters.a && !isNaN(+specificParameters.a) &&
-                    !!specificParameters.b && !isNaN(+specificParameters.b);
+                specificParametersCheck = verifyNumber(specificParameters.a) && verifyNumber(specificParameters.b);
                 break;
 
             case DistributionType.EXPONENTIAL:
+                break; // TODO
+
             case DistributionType.NORMAL:
                 specificParametersCheck = false;
                 break;
@@ -54,7 +60,7 @@ export class Task8 extends Task<{}, Task8State> {
         this.setState({ ...this.state, distributionType });
     }
 
-    private onSpecificParameterChange(name: 'a' | 'b') {
+    private onSpecificParameterChange(name: 'a' | 'b' | 'm' | 'k') {
         return (e: React.FormEvent<HTMLInputElement>) => {
             this.setState({
                 ...this.state,
@@ -73,8 +79,27 @@ export class Task8 extends Task<{}, Task8State> {
 
         let specificParametersOutput: React.ReactNode;
         switch (distributionType) {
-            case DistributionType.BERNOULLI:
             case DistributionType.BINOMIAL:
+                specificParametersOutput = (
+                    <>
+                        Третье задание:
+                        <br />
+
+                        <strong>m</strong> =&nbsp;
+                        <InputText value={specificParameters.m ?? ''} onChange={this.onSpecificParameterChange('m')} />
+                        <ValidationIcon valid={verifyInteger(specificParameters.m) && +specificParameters.m > 0} />
+                        <br />
+
+                        Четвёртое задание:
+                        <br />
+
+                        <strong>k</strong> =&nbsp;
+                        <InputText value={specificParameters.k ?? ''} onChange={this.onSpecificParameterChange('k')} />
+                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k <= +specificParameters.m} />
+                    </>
+                );
+                break;
+
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
                 specificParametersOutput = (
@@ -92,12 +117,12 @@ export class Task8 extends Task<{}, Task8State> {
 
                         <strong>a</strong> =&nbsp;
                         <InputText value={specificParameters.a ?? ''} onChange={this.onSpecificParameterChange('a')} />
-                        <ValidationIcon valid={!!specificParameters.a && !isNaN(+specificParameters.a)} />
+                        <ValidationIcon valid={verifyNumber(specificParameters.a)} />
                         <br />
 
                         <strong>b</strong> =&nbsp;
                         <InputText value={specificParameters.b ?? ''} onChange={this.onSpecificParameterChange('b')} />
-                        <ValidationIcon valid={!!specificParameters.b && !isNaN(+specificParameters.b)} />
+                        <ValidationIcon valid={verifyNumber(specificParameters.b)} />
                     </>
                 );
                 break;
@@ -119,10 +144,42 @@ export class Task8 extends Task<{}, Task8State> {
                 <br />
 
                 Распределение:&nbsp;
-                <InputDistributionType value={distributionType} onChange={this.onDistributionTypeChange.bind(this)} />
+                <InputDistributionType exclude={[DistributionType.BERNOULLI]} value={distributionType}
+                                       onChange={this.onDistributionTypeChange.bind(this)} />
                 <br />
 
                 {specificParametersOutput}
+            </>
+        );
+    }
+
+    private renderBinomialAnswer(avg: number, variance: number): React.ReactNode {
+        const { specificParameters } = this.state;
+
+        const m = +specificParameters.m;
+        const k = +specificParameters.k;
+
+        const theta = avg / m;
+        const p = factorial(m) / (factorial(m - k) * factorial(k)) * theta ** k * (1 - theta) ** (m - k);
+
+        return (
+            <>
+                Оценка метода моментов <strong>&#952;&#770;</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(1 - variance / avg)} />
+                <br />
+
+                Оценка метода моментов <strong>m&#770;</strong>:&nbsp;
+                <InputText readOnly value={Math.round(avg ** 2 / (avg - variance))} />
+                <br />
+
+                Оценка максимального правдоподобия <strong>&#952;&#770;</strong> для&nbsp;
+                <strong>m = {m}</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Вероятность, что завтра опоздает ровно <strong>k = {k}</strong> поездов:&nbsp;
+                <InputText readOnly value={normalizeNumber(p)} />
+                <br />
             </>
         );
     }
@@ -173,8 +230,9 @@ export class Task8 extends Task<{}, Task8State> {
         const sampleVariance = sqAvg - avg ** 2;
 
         switch (distributionType) {
-            case DistributionType.BERNOULLI:
             case DistributionType.BINOMIAL:
+                return this.renderBinomialAnswer(avg, sampleVariance);
+
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
                 return (
