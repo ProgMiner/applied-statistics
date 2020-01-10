@@ -3,7 +3,6 @@ import { Dropdown } from 'primereact/dropdown';
 import { SelectItem } from 'primereact/api';
 
 import { DistributionType } from '../../utils/distribution';
-import { ValidationIcon } from '../ValidationIcon/ValidationIcon';
 
 export interface InputDistributionTypeProps {
 
@@ -47,12 +46,9 @@ export class InputDistributionType extends React.Component<InputDistributionType
         const { exclude } = this.props;
 
         return (
-            <>
-                <Dropdown itemTemplate={InputDistributionType.dropdownTemplate} value={this.props.value}
-                          options={InputDistributionType.selectItems.filter(v => !exclude.includes(v.value))}
-                          onChange={(e: { value: DistributionType }) => this.props.onChange(e.value)} />
-                <ValidationIcon valid={!!this.props.value} />
-            </>
+            <Dropdown itemTemplate={InputDistributionType.dropdownTemplate} value={this.props.value}
+                      options={InputDistributionType.selectItems.filter(v => !exclude.includes(v.value))}
+                      onChange={(e: { value: DistributionType }) => this.props.onChange(e.value)} />
         );
     }
 }

@@ -52,18 +52,37 @@ export class Task10 extends Task<{}, Task10State> {
 
         return (
             <>
-                Выборка для задания:&nbsp;
-                <FetchingInputSample onChange={this.onSampleChange.bind(this)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Выборка для задания:
+                    </span>
 
-                Вес одного эскимо:&nbsp;
-                <InputText value={m} onChange={this.onMChange.bind(this)} />
-                <ValidationIcon valid={verifyInteger(m)} />
-                <br />
+                    <FetchingInputSample onChange={this.onSampleChange.bind(this)} />
+                </div>
 
-                <strong>&#949;</strong> =&nbsp;
-                <InputText value={e} onChange={this.onEChange.bind(this)} />
-                <ValidationIcon valid={verifyNumber(e)} />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Вес одного эскимо:
+                    </span>
+
+                    <InputText value={m} onChange={this.onMChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={verifyInteger(m)} />
+                    </span>
+                </div>
+
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <strong>&#949;</strong> =
+                    </span>
+
+                    <InputText value={e} onChange={this.onEChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={verifyNumber(e)} />
+                    </span>
+                </div>
             </>
         );
     }

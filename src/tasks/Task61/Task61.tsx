@@ -49,17 +49,32 @@ export class Task61 extends Task<{}, Task61State> {
 
         return (
             <>
-                Объём (<strong>n</strong> =):&nbsp;
-                <InputText value={n} onChange={this.onNChange.bind(this)} />
-                <ValidationIcon valid={verifyNumber(n)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Объём <strong>n</strong> =
+                    </span>
+
+                    <InputText value={n} onChange={this.onNChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={verifyNumber(n)} />
+                    </span>
+                </div>
 
                 <InputDistribution normalSigmaSquare={false} value={distribution}
                                    onChange={this.onDistributionChange.bind(this)} />
 
-                <strong>random seed</strong> =&nbsp;
-                <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
-                <ValidationIcon valid={verifyNumber(randomSeed)} />
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <strong>random seed</strong> =
+                    </span>
+
+                    <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={verifyNumber(randomSeed)} />
+                    </span>
+                </div>
             </>
         );
     }
@@ -114,9 +129,11 @@ print(sum(sample)/len(sample))
 
         return (
             <>
-                Выполните следущий код в Python-интерпретаторе (например, на сайте <a href="https://repl.it" target="_blank" rel="noopener noreferrer">repl.it</a>):
+                <div className="margin-bottom">
+                    Выполните следущий код в Python-интерпретаторе (например, на сайте <a href="https://repl.it" target="_blank" rel="noopener noreferrer">repl.it</a>):
+                </div>
 
-                <pre>{code}</pre>
+                <code className="margin-bottom">{code.trim()}</code>
 
                 И скопируйте выведенные на экран строки в поля для ответов.
             </>

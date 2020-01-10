@@ -96,8 +96,11 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
         return (
             <>
                 <InputText placeholder="URL-адрес выборки" value={url} onChange={this.onUrlChange.bind(this)} />
-                <ValidationIcon clickable={this.urlRegex.test(url)} valid={loading ? undefined : !!sample}
-                                onClick={this.onIconClick.bind(this)} />
+
+                <span className="p-inputgroup-addon">
+                    <ValidationIcon clickable={this.urlRegex.test(url)} valid={loading ? undefined : !!sample}
+                                    onClick={this.onIconClick.bind(this)} />
+                </span>
             </>
         )
     }

@@ -155,25 +155,56 @@ export class Task7 extends Task<{}, Task7State> {
 
         return (
             <>
-                Выберите города, <strong>не</strong> попавшие в выборку:&nbsp;
-                <MultiSelect filter value={cities} options={citySelectItems} style={{ verticalAlign: 'middle' }}
-                             onChange={this.onCitiesChange.bind(this)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Выберите города, <strong>не</strong> попавшие в выборку:
+                    </span>
 
-                Введите номера необходимых элементов выборки (<strong>X</strong>):&nbsp;
-                {[0, 1, 2].map(i => (
-                    <InputText key={i} value={sampleIndices[i]} onChange={this.onIndexChange('sampleIndices', i)} />
-                ))}
+                    <MultiSelect filter value={cities} options={citySelectItems} style={{ verticalAlign: 'middle' }}
+                                 onChange={this.onCitiesChange.bind(this)} />
+                </div>
 
-                <ValidationIcon valid={this.checkIndices(sampleIndices, avgSalary.length - cities.length)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Введите номера необходимых элементов выборки (<strong>X</strong>):
+                    </span>
 
-                Введите номера необходимых интервалов (<strong>A</strong>):&nbsp;
-                {[0, 1, 2].map(i => (
-                    <InputText key={i} value={intervalIndices[i]} onChange={this.onIndexChange('intervalIndices', i)} />
-                ))}
+                    {[0, 1, 2].map(i => (
+                        <React.Fragment key={i}>
+                            {i > 0 && (
+                                <span className="p-inputgroup-addon" />
+                            )}
 
-                <ValidationIcon valid={this.checkIndices(intervalIndices)} />
+                            <InputText value={sampleIndices[i]}
+                                       onChange={this.onIndexChange('sampleIndices', i)} />
+                        </React.Fragment>
+                    ))}
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={this.checkIndices(sampleIndices, avgSalary.length - cities.length)} />
+                    </span>
+                </div>
+
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        Введите номера необходимых интервалов (<strong>A</strong>):&nbsp;
+                    </span>
+
+                    {[0, 1, 2].map(i => (
+                        <React.Fragment key={i}>
+                            {i > 0 && (
+                                <span className="p-inputgroup-addon" />
+                            )}
+
+                            <InputText value={intervalIndices[i]}
+                                       onChange={this.onIndexChange('intervalIndices', i)} />
+                        </React.Fragment>
+                    ))}
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={this.checkIndices(intervalIndices)} />
+                    </span>
+                </div>
             </>
         );
     }

@@ -203,21 +203,34 @@ export class InputDistribution extends React.Component<InputDistributionProps, I
                 const value = distributionParams[param.field] ?? '';
 
                 return (
-                    <React.Fragment key={param.name}>
-                        <strong>{param.name}</strong> =&nbsp;
+                    <div key={param.name} className="p-inputgroup half-margin-bottom-not-last">
+                        <span className="p-inputgroup-addon">
+                            <strong>{param.name}</strong> =
+                        </span>
+
                         <InputText value={value} onChange={this.onDistributionParamChange(param.field)} />
-                        <ValidationIcon valid={param.integer ? verifyInteger(value) : verifyNumber(value)} />
-                        <br />
-                    </React.Fragment>
+
+                        <span className="p-inputgroup-addon">
+                            <ValidationIcon valid={param.integer ? verifyInteger(value) : verifyNumber(value)} />
+                        </span>
+                    </div>
                 );
             });
 
         return (
             <>
-                Распределение:&nbsp;
-                <InputDistributionType exclude={exclude} value={this.state.distributionType}
-                                       onChange={this.onDistributionTypeChange.bind(this)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom-not-last">
+                    <span className="p-inputgroup-addon">
+                        Распределение:
+                    </span>
+
+                    <InputDistributionType exclude={exclude} value={this.state.distributionType}
+                                           onChange={this.onDistributionTypeChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={!!this.state.distributionType} />
+                    </span>
+                </div>
 
                 {paramsComponents}
             </>

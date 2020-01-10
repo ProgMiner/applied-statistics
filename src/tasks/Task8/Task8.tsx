@@ -12,6 +12,7 @@ import { verifyInteger } from '../../utils/verifyInteger';
 import { verifyNumber } from '../../utils/verifyNumber';
 import { factorial } from '../../utils/factorial';
 import { erf } from '../../utils/erf';
+import { Fieldset } from 'primereact/fieldset';
 
 interface Task8State {
 
@@ -79,20 +80,37 @@ export class Task8 extends Task<{}, Task8State> {
             case DistributionType.BINOMIAL:
                 specificParametersOutput = (
                     <>
-                        Третье задание:
-                        <br />
+                        <Fieldset legend="Третье задание:" className="half-margin-bottom">
+                            <div className="p-inputgroup">
+                                <span className="p-inputgroup-addon">
+                                    <strong>m</strong> =
+                                </span>
 
-                        <strong>m</strong> =&nbsp;
-                        <InputText value={specificParameters.m ?? ''} onChange={this.onSpecificParameterChange('m')} />
-                        <ValidationIcon valid={verifyInteger(specificParameters.m) && +specificParameters.m > 0} />
-                        <br />
+                                <InputText value={specificParameters.m ?? ''}
+                                           onChange={this.onSpecificParameterChange('m')} />
 
-                        Четвёртое задание:
-                        <br />
+                                <span className="p-inputgroup-addon">
+                                    <ValidationIcon valid={verifyInteger(specificParameters.m) &&
+                                        +specificParameters.m > 0} />
+                                </span>
+                            </div>
+                        </Fieldset>
 
-                        <strong>k</strong> =&nbsp;
-                        <InputText value={specificParameters.k ?? ''} onChange={this.onSpecificParameterChange('k')} />
-                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k <= +specificParameters.m} />
+                        <Fieldset legend="Четвёртое задание:">
+                            <div className="p-inputgroup">
+                                <span className="p-inputgroup-addon">
+                                    <strong>k</strong> =
+                                </span>
+
+                                <InputText value={specificParameters.k ?? ''}
+                                           onChange={this.onSpecificParameterChange('k')} />
+
+                                <span className="p-inputgroup-addon">
+                                    <ValidationIcon valid={verifyInteger(specificParameters.k) &&
+                                        +specificParameters.k <= +specificParameters.m} />
+                                </span>
+                            </div>
+                        </Fieldset>
                     </>
                 );
                 break;
@@ -102,46 +120,79 @@ export class Task8 extends Task<{}, Task8State> {
             case DistributionType.EXPONENTIAL:
             case DistributionType.NORMAL:
                 specificParametersOutput = (
-                    <>
-                        Четвёртое задание:
-                        <br />
+                    <Fieldset legend="Четвёртое задание:">
+                        <div className="p-inputgroup">
+                            <span className="p-inputgroup-addon">
+                                <strong>k</strong> =
+                            </span>
 
-                        <strong>k</strong> =&nbsp;
-                        <InputText value={specificParameters.k ?? ''} onChange={this.onSpecificParameterChange('k')} />
-                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k > 0} />
-                    </>
+                            <InputText value={specificParameters.k ?? ''}
+                                       onChange={this.onSpecificParameterChange('k')} />
+
+                            <span className="p-inputgroup-addon">
+                                <ValidationIcon valid={verifyInteger(specificParameters.k) &&
+                                    +specificParameters.k > 0} />
+                            </span>
+                        </div>
+                    </Fieldset>
                 );
                 break;
 
             case DistributionType.UNIFORM:
                 specificParametersOutput = (
-                    <>
-                        Четвёртое задание:
-                        <br />
+                        <Fieldset legend="Четвёртое задание:">
+                            <div className="p-inputgroup half-margin-bottom">
+                                <span className="p-inputgroup-addon">
+                                    <strong>a</strong> =
+                                </span>
 
-                        <strong>a</strong> =&nbsp;
-                        <InputText value={specificParameters.a ?? ''} onChange={this.onSpecificParameterChange('a')} />
-                        <ValidationIcon valid={verifyNumber(specificParameters.a)} />
-                        <br />
+                                <InputText value={specificParameters.a ?? ''}
+                                           onChange={this.onSpecificParameterChange('a')} />
 
-                        <strong>b</strong> =&nbsp;
-                        <InputText value={specificParameters.b ?? ''} onChange={this.onSpecificParameterChange('b')} />
-                        <ValidationIcon valid={verifyNumber(specificParameters.b)} />
-                    </>
+                                <span className="p-inputgroup-addon">
+                                    <ValidationIcon valid={verifyNumber(specificParameters.a)} />
+                                </span>
+                            </div>
+
+                            <div className="p-inputgroup">
+                                <span className="p-inputgroup-addon">
+                                    <strong>b</strong> =
+                                </span>
+
+                                <InputText value={specificParameters.b ?? ''}
+                                           onChange={this.onSpecificParameterChange('b')} />
+
+                                <span className="p-inputgroup-addon">
+                                    <ValidationIcon valid={verifyNumber(specificParameters.b)} />
+                                </span>
+                            </div>
+                        </Fieldset>
                 );
                 break;
         }
 
         return (
             <>
-                Выборка для задания:&nbsp;
-                <FetchingInputSample onChange={this.onSampleChange.bind(this)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Выборка для задания:
+                    </span>
 
-                Распределение:&nbsp;
-                <InputDistributionType exclude={[DistributionType.BERNOULLI]} value={distributionType}
-                                       onChange={this.onDistributionTypeChange.bind(this)} />
-                <br />
+                    <FetchingInputSample onChange={this.onSampleChange.bind(this)} />
+                </div>
+
+                <div className="p-inputgroup half-margin-bottom-not-last">
+                    <span className="p-inputgroup-addon">
+                        Распределение:
+                    </span>
+
+                    <InputDistributionType exclude={[DistributionType.BERNOULLI]} value={distributionType}
+                                           onChange={this.onDistributionTypeChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={!!this.state.distributionType} />
+                    </span>
+                </div>
 
                 {specificParametersOutput}
             </>

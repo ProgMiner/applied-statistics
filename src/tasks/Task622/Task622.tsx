@@ -47,16 +47,23 @@ export class Task622 extends Task<{}, Task622State> {
 
         return (
             <>
-                Выборка объёма <strong>n = 10</strong>:&nbsp;
-                <FetchingInputSample onChange={this.onSample10Change.bind(this)} />
-                <br />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Выборка объёма <strong>n = 10</strong>:
+                    </span>
 
-                Выборка объёма <strong>n = 10000</strong>:&nbsp;
-                <FetchingInputSample onChange={this.onSample10000Change.bind(this)} />
-                <br />
+                    <FetchingInputSample onChange={this.onSample10Change.bind(this)} />
+                </div>
 
-                <InputDistribution normalSigmaSquare={false} value={distribution}
-                                   onChange={this.onDistributionChange.bind(this)} />
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        Выборка объёма <strong>n = 10000</strong>:
+                    </span>
+
+                    <FetchingInputSample onChange={this.onSample10000Change.bind(this)} />
+                </div>
+
+                <InputDistribution value={distribution} onChange={this.onDistributionChange.bind(this)} />
             </>
         );
     }

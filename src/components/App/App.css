@@ -1,1 +1,43 @@
 
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 1ch;
+}
+
+body .App .p-inputgroup .p-inputgroup-addon {
+    color: inherit;
+}
+
+code {
+    display: block;
+    padding: 0.5ch;
+    white-space: pre;
+    overflow-x: auto;
+    border: 1px solid #c8c8c8;
+    border-radius: 3px;
+    background: #f4f4f4;
+}
+
+.sticky-container {
+    padding: 1ch;
+    margin: -1ch -1ch 0 -1ch;
+    position: sticky;
+    z-index: 1;
+    right: 0;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(to bottom, #2f2f2f, transparent);
+}
+
+.half-margin-bottom, .half-margin-bottom-not-last {
+    margin-bottom: 0.5ch;
+}
+
+.margin-bottom {
+    margin-bottom: 1ch;
+}

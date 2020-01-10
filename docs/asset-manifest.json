@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/applied-statistics/static/css/main.161d7b32.chunk.css",
-    "main.js": "/applied-statistics/static/js/main.a04a3ad8.chunk.js",
-    "main.js.map": "/applied-statistics/static/js/main.a04a3ad8.chunk.js.map",
+    "main.css": "/applied-statistics/static/css/main.6aa36046.chunk.css",
+    "main.js": "/applied-statistics/static/js/main.069b6584.chunk.js",
+    "main.js.map": "/applied-statistics/static/js/main.069b6584.chunk.js.map",
     "runtime-main.js": "/applied-statistics/static/js/runtime-main.cb3af7a4.js",
     "runtime-main.js.map": "/applied-statistics/static/js/runtime-main.cb3af7a4.js.map",
     "static/css/2.72a5daec.chunk.css": "/applied-statistics/static/css/2.72a5daec.chunk.css",
-    "static/js/2.880b54c0.chunk.js": "/applied-statistics/static/js/2.880b54c0.chunk.js",
-    "static/js/2.880b54c0.chunk.js.map": "/applied-statistics/static/js/2.880b54c0.chunk.js.map",
+    "static/js/2.8092db5c.chunk.js": "/applied-statistics/static/js/2.8092db5c.chunk.js",
+    "static/js/2.8092db5c.chunk.js.map": "/applied-statistics/static/js/2.8092db5c.chunk.js.map",
     "index.html": "/applied-statistics/index.html",
-    "precache-manifest.73970ab84b388cf8e8e565f5b1bedced.js": "/applied-statistics/precache-manifest.73970ab84b388cf8e8e565f5b1bedced.js",
+    "precache-manifest.e7072a8cafa92c5ea2da08b29a0b80c7.js": "/applied-statistics/precache-manifest.e7072a8cafa92c5ea2da08b29a0b80c7.js",
     "service-worker.js": "/applied-statistics/service-worker.js",
     "static/css/2.72a5daec.chunk.css.map": "/applied-statistics/static/css/2.72a5daec.chunk.css.map",
-    "static/css/main.161d7b32.chunk.css.map": "/applied-statistics/static/css/main.161d7b32.chunk.css.map",
-    "static/js/2.880b54c0.chunk.js.LICENSE": "/applied-statistics/static/js/2.880b54c0.chunk.js.LICENSE",
+    "static/css/main.6aa36046.chunk.css.map": "/applied-statistics/static/css/main.6aa36046.chunk.css.map",
+    "static/js/2.8092db5c.chunk.js.LICENSE": "/applied-statistics/static/js/2.8092db5c.chunk.js.LICENSE",
     "static/media/primereact.min.css": "/applied-statistics/static/media/line.567f5738.gif",
     "static/media/theme.css": "/applied-statistics/static/media/open-sans-v15-latin-regular.cffb686d.woff2",
     "static/media/primeicons.css": "/applied-statistics/static/media/primeicons.e5e0e944.svg"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.cb3af7a4.js",
     "static/css/2.72a5daec.chunk.css",
-    "static/js/2.880b54c0.chunk.js",
-    "static/css/main.161d7b32.chunk.css",
-    "static/js/main.a04a3ad8.chunk.js"
+    "static/js/2.8092db5c.chunk.js",
+    "static/css/main.6aa36046.chunk.css",
+    "static/js/main.069b6584.chunk.js"
   ]
 }

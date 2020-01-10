@@ -42,11 +42,18 @@ export class Task621 extends Task<{}, Task621State> {
         const { alchemists } = this.state;
 
         return (
-            <>
-                Выборка: <InputText placeholder="(a, b, c...)" value={alchemists}
-                                    onChange={this.onAlchemistsChange.bind(this)} />
-                <ValidationIcon valid={this.alchemistsRegexp.test(alchemists)} />
-            </>
+            <div className="p-inputgroup">
+                <span className="p-inputgroup-addon">
+                    Выборка:
+                </span>
+
+                <InputText placeholder="(a, b, c...)" value={alchemists}
+                           onChange={this.onAlchemistsChange.bind(this)} />
+
+                <span className="p-inputgroup-addon">
+                    <ValidationIcon valid={this.alchemistsRegexp.test(alchemists)} />
+                </span>
+            </div>
         );
     }
 
@@ -79,7 +86,7 @@ export class Task621 extends Task<{}, Task621State> {
                         <tr key={String(f)}>
                             {counts.filter(f).map(v => (
                                 <td key={v.value}>
-                                    P(&#958;<sup>*</sup> = {v.value}) =&nbsp;
+                                    P(&#958;<sup>*</sup> = {v.value}) =
                                     <InputText readOnly value={v.count === 0 ? '0' : `${v.count} / ${sample.length}`} />
                                 </td>
                             ))}
