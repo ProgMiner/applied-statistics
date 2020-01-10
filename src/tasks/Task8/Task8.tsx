@@ -35,12 +35,9 @@ export class Task8 extends Task<{}, Task8State> {
                 break;
 
             case DistributionType.GEOMETRIC:
-                specificParametersCheck = verifyInteger(specificParameters.k) &&
-                    +specificParameters.k <= (max(sample) ?? Number.MAX_VALUE);
-                break;
-
             case DistributionType.POISSON:
-                break; // TODO
+                specificParametersCheck = verifyInteger(specificParameters.k) && +specificParameters.k > 0;
+                break;
 
             case DistributionType.UNIFORM:
                 specificParametersCheck = verifyNumber(specificParameters.a) && verifyNumber(specificParameters.b);
@@ -80,7 +77,7 @@ export class Task8 extends Task<{}, Task8State> {
     }
 
     protected renderParameters() {
-        const { sample, distributionType, specificParameters } = this.state;
+        const { distributionType, specificParameters } = this.state;
 
         let specificParametersOutput: React.ReactNode;
         switch (distributionType) {
@@ -106,6 +103,7 @@ export class Task8 extends Task<{}, Task8State> {
                 break;
 
             case DistributionType.GEOMETRIC:
+            case DistributionType.POISSON:
                 specificParametersOutput = (
                     <>
                         Четвёртое задание:
@@ -113,15 +111,7 @@ export class Task8 extends Task<{}, Task8State> {
 
                         <strong>k</strong> =&nbsp;
                         <InputText value={specificParameters.k ?? ''} onChange={this.onSpecificParameterChange('k')} />
-                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k <= (max(sample) ?? Number.MAX_VALUE)} />
-                    </>
-                );
-                break;
-
-            case DistributionType.POISSON:
-                specificParametersOutput = (
-                    <>
-                        // TODO
+                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k > 0} />
                     </>
                 );
                 break;
@@ -230,6 +220,35 @@ export class Task8 extends Task<{}, Task8State> {
         );
     }
 
+    private renderPoissonAnswer(avg: number, sqAvg: number): React.ReactNode {
+        const { specificParameters } = this.state;
+
+        const k = +specificParameters.k;
+
+        const theta = avg;
+        const p = Math.exp(-theta) * theta ** k / factorial(k);
+
+        return (
+            <>
+                Оценка метода моментов <strong>&#952;&#770;<sub>1</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Оценка метода моментов <strong>&#952;&#770;<sub>2</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber((-1 + Math.sqrt(1 + 4 * sqAvg)) / 2)} />
+                <br />
+
+                Оценка максимального правдоподобия <strong>&#952;&#770;</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Вероятность, что в течение случайных пяти минут поступит <strong>k = {k}</strong> звонков:&nbsp;
+                <InputText readOnly value={normalizeNumber(p)} />
+                <br />
+            </>
+        );
+    }
+
     private renderUniformAnswer(avg: number, variance: number): React.ReactNode {
         const { sample, specificParameters } = this.state;
 
@@ -283,11 +302,7 @@ export class Task8 extends Task<{}, Task8State> {
                 return this.renderGeometricAnswer(avg, sqAvg);
 
             case DistributionType.POISSON:
-                return (
-                    <>
-                        // TODO
-                    </>
-                );
+                return this.renderPoissonAnswer(avg, sqAvg);
 
             case DistributionType.UNIFORM:
                 return this.renderUniformAnswer(avg, sampleVariance);
