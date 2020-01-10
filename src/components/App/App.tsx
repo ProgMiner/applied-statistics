@@ -6,6 +6,7 @@ import { Week7 } from '../../weeks/Week7/Week7';
 import './App.css';
 import { Panel } from 'primereact/panel';
 import { Week8 } from '../../weeks/Week8/Week8';
+import { Week10 } from '../../weeks/Week10/Week10';
 
 export class App extends React.Component {
 
@@ -34,6 +35,7 @@ export class App extends React.Component {
                 <Week6 />
                 <Week7 />
                 <Week8 />
+                <Week10 />
             </div>
         );
     }
