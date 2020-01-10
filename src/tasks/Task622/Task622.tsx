@@ -7,6 +7,7 @@ import { Distribution, DistributionType } from '../../utils/distribution';
 import { InputDistribution } from '../../components/InputDistribution/InputDistribution';
 import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { sampleVariance } from '../../utils/sampleVariance';
+import { normalizeNumber } from '../../utils/normalizeNumber';
 
 interface Task622State {
 
@@ -64,10 +65,10 @@ export class Task622 extends Task<{}, Task622State> {
         return (
             <>
                 Для выборки объёма <strong>{v}</strong>:<br />
-                Оценка <strong>{property}</strong>: <InputText readOnly value={p} /><br />
-                Погрешность оценки: <InputText readOnly value={Math.abs(p - trueP)} /><br />
-                Оценка дисперсии: <InputText readOnly value={d} /><br />
-                Погрешность оценки дисперсии: <InputText readOnly value={Math.abs(d - trueD)} />
+                Оценка <strong>{property}</strong>: <InputText readOnly value={normalizeNumber(p)} /><br />
+                Погрешность оценки: <InputText readOnly value={normalizeNumber(Math.abs(p - trueP))} /><br />
+                Оценка дисперсии: <InputText readOnly value={normalizeNumber(d)} /><br />
+                Погрешность оценки дисперсии: <InputText readOnly value={normalizeNumber(Math.abs(d - trueD))} />
             </>
         )
     }

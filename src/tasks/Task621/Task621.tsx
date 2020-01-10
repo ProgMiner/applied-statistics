@@ -7,6 +7,7 @@ import { Task } from '../../components/Task/Task';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { sampleVariance } from '../../utils/sampleVariance';
 import { median } from '../../utils/median';
+import { normalizeNumber } from '../../utils/normalizeNumber';
 
 interface Task621State {
 
@@ -87,9 +88,9 @@ export class Task621 extends Task<{}, Task621State> {
                     </tbody>
                 </table>
 
-                Математическое ожидание: <InputText readOnly value={e} /><br />
-                Дисперсия: <InputText readOnly value={d} /><br />
-                Среднеквадратическое отклонение: <InputText readOnly value={Math.sqrt(d)} /><br />
+                Математическое ожидание: <InputText readOnly value={normalizeNumber(e)} /><br />
+                Дисперсия: <InputText readOnly value={normalizeNumber(d)} /><br />
+                Среднеквадратическое отклонение: <InputText readOnly value={normalizeNumber(Math.sqrt(d))} /><br />
                 Медиана: <InputText readOnly value={m} /><br />
                 Мода: <InputText readOnly value={mode} /><br />
             </>

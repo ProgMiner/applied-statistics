@@ -7,6 +7,7 @@ import { DistributionType } from '../../utils/distribution';
 import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { InputDistributionType } from '../../components/InputDistributionType/InputDistributionType';
+import { normalizeNumber } from '../../utils/normalizeNumber';
 
 interface Task8State {
 
@@ -140,19 +141,21 @@ export class Task8 extends Task<{}, Task8State> {
         return (
             <>
                 Оценка метода моментов <strong>&#952;&#770;</strong>:&nbsp;
-                <InputText readOnly value={avg - sqrt3Variance} />
+                <InputText readOnly value={normalizeNumber(avg - sqrt3Variance)} />
                 <br />
 
                 Оценка метода моментов <strong>b&#770;</strong>:&nbsp;
-                <InputText readOnly value={avg + sqrt3Variance} />
+                <InputText readOnly value={normalizeNumber(avg + sqrt3Variance)} />
                 <br />
 
                 Оценка максимального правдоподобия <strong>b</strong>:&nbsp;
                 <InputText readOnly value={b} />
                 <br />
 
-                Оценка метода моментов <strong>b&#770;</strong>:&nbsp;
-                <InputText readOnly value={(+specificParameters.b - +specificParameters.a) / (b - a)} />
+                Вероятность обрушения на участке от&nbsp;
+                <strong>a = {specificParameters.a}</strong> до&nbsp;
+                <strong>b = {specificParameters.b}</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber((+specificParameters.b - +specificParameters.a) / (b - a))} />
                 <br />
             </>
         );

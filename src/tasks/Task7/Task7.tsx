@@ -9,6 +9,7 @@ import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { sampleVariance } from '../../utils/sampleVariance';
 import { median } from '../../utils/median';
 import { sampleQuantile } from '../../utils/sampleQuantile';
+import { normalizeNumber } from '../../utils/normalizeNumber';
 
 const citySelectItems: SelectItem[] = [
     { label: 'Алтайский край', value: 0 },
@@ -224,15 +225,15 @@ export class Task7 extends Task<{}, Task7State> {
                 </table>
 
                 Выборочное среднее:&nbsp;
-                <InputText readOnly value={e} />
+                <InputText readOnly value={normalizeNumber(e)} />
                 <br />
 
                 Смещенная выборочная дисперсия:&nbsp;
-                <InputText readOnly value={v} />
+                <InputText readOnly value={normalizeNumber(v)} />
                 <br />
 
                 Несмещенная выборочная дисперсия:&nbsp;
-                <InputText readOnly value={fixedV} />
+                <InputText readOnly value={normalizeNumber(fixedV)} />
                 <br />
 
                 Выборочная медиана:&nbsp;
