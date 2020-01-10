@@ -1,12 +1,12 @@
 import React from 'react';
 import mean from 'lodash/mean';
 import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
 
 import { Task } from '../../components/Task/Task';
-import { DistributionType, distributionTypesSelectItems } from '../../utils/distribution';
+import { DistributionType } from '../../utils/distribution';
 import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
+import { InputDistributionType } from '../../components/InputDistributionType/InputDistributionType';
 
 interface Task8State {
 
@@ -49,12 +49,8 @@ export class Task8 extends Task<{}, Task8State> {
         this.setState({...this.state, sample});
     }
 
-    private onDistributionTypeChange(e: { value: DistributionType }) {
-        this.setState({
-            ...this.state,
-
-            distributionType: e.value
-        });
+    private onDistributionTypeChange(distributionType?: DistributionType) {
+        this.setState({ ...this.state, distributionType });
     }
 
     private onSpecificParameterChange(name: 'a' | 'b') {
@@ -122,9 +118,7 @@ export class Task8 extends Task<{}, Task8State> {
                 <br />
 
                 Распределение:&nbsp;
-                <Dropdown value={distributionType} options={distributionTypesSelectItems}
-                          onChange={this.onDistributionTypeChange.bind(this)} />
-                <ValidationIcon valid={!!distributionType} />
+                <InputDistributionType value={distributionType} onChange={this.onDistributionTypeChange.bind(this)} />
                 <br />
 
                 {specificParametersOutput}

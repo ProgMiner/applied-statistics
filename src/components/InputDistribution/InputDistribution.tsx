@@ -1,12 +1,12 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
 import mapValues from 'lodash/mapValues';
 import isEqual from 'lodash/isEqual';
 
-import { Distribution, DistributionType, distributionTypesSelectItems } from '../../utils/distribution';
+import { Distribution, DistributionType } from '../../utils/distribution';
 import { filterObject } from '../../utils/filterObject';
 import { ValidationIcon } from '../ValidationIcon/ValidationIcon';
+import { InputDistributionType } from '../InputDistributionType/InputDistributionType';
 
 export interface DistributionSelectorProps {
 
@@ -22,7 +22,7 @@ interface DistributionSelectorState {
     distributionParams: { [key: string]: string | undefined };
 }
 
-export class DistributionSelector extends React.Component<DistributionSelectorProps, DistributionSelectorState> {
+export class InputDistribution extends React.Component<DistributionSelectorProps, DistributionSelectorState> {
 
     static defaultProps: DistributionSelectorProps = {
 
@@ -56,12 +56,8 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         }
     }
 
-    private onDistributionTypeChange(e: { value: DistributionType }) {
-        this.setState({
-            ...this.state,
-
-            distributionType: e.value as DistributionType
-        });
+    private onDistributionTypeChange(distributionType: DistributionType) {
+        this.setState({ ...this.state, distributionType });
     }
 
     private onDistributionParamChange(param: string, event: React.FormEvent<HTMLInputElement>) {
@@ -220,9 +216,8 @@ export class DistributionSelector extends React.Component<DistributionSelectorPr
         return (
             <>
                 Распределение:&nbsp;
-                <Dropdown value={this.state.distributionType} options={distributionTypesSelectItems}
-                          onChange={this.onDistributionTypeChange.bind(this)} />
-                <ValidationIcon valid={!!this.state.distributionType} />
+                <InputDistributionType value={this.state.distributionType}
+                                       onChange={this.onDistributionTypeChange.bind(this)} />
                 <br />
 
                 {paramsComponents}

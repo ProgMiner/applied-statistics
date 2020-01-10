@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext';
 
 import { Task } from '../../components/Task/Task';
 import { Distribution, DistributionType } from '../../utils/distribution';
-import { DistributionSelector } from '../../components/DistributionSelector/DistributionSelector';
+import { InputDistribution } from '../../components/InputDistribution/InputDistribution';
 import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { sampleVariance } from '../../utils/sampleVariance';
 
@@ -54,8 +54,8 @@ export class Task622 extends Task<{}, Task622State> {
                 <FetchingInputSample onChange={this.onSample10000Change.bind(this)} />
                 <br />
 
-                <DistributionSelector normalSigmaSquare={false} value={distribution}
-                                      onChange={this.onDistributionChange.bind(this)} />
+                <InputDistribution normalSigmaSquare={false} value={distribution}
+                                   onChange={this.onDistributionChange.bind(this)} />
             </>
         );
     }

@@ -1,20 +1,13 @@
-import { SelectItem } from 'primereact/api';
 
 export enum DistributionType {
 
-    BERNOULLI = 'Бернулли',
-
-    BINOMIAL = 'Биноминальное',
-
-    GEOMETRIC = 'Геометрическое',
-
-    POISSON = 'Пуассона',
-
-    UNIFORM = 'Равномерное',
-
-    EXPONENTIAL = 'Показательное',
-
-    NORMAL = 'Нормальное'
+    BERNOULLI = 1,
+    BINOMIAL,
+    GEOMETRIC,
+    POISSON,
+    UNIFORM,
+    EXPONENTIAL,
+    NORMAL
 }
 
 export interface BernoulliDistribution {
@@ -86,6 +79,3 @@ export const distributionTypes = [
     DistributionType.EXPONENTIAL,
     DistributionType.NORMAL
 ];
-
-export const distributionTypesSelectItems: SelectItem[] = distributionTypes
-    .map(type => ({ label: type, value: type }));

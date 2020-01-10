@@ -3,7 +3,7 @@ import { InputText } from 'primereact/inputtext';
 
 import { Task } from '../../components/Task/Task';
 import { Distribution, DistributionType } from '../../utils/distribution';
-import { DistributionSelector } from '../../components/DistributionSelector/DistributionSelector';
+import { InputDistribution } from '../../components/InputDistribution/InputDistribution';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 
 interface Task61State {
@@ -60,8 +60,8 @@ export class Task61 extends Task<{}, Task61State> {
                 <ValidationIcon valid={numericN !== undefined && !isNaN(numericN)} />
                 <br />
 
-                <DistributionSelector normalSigmaSquare={false} value={distribution}
-                                      onChange={this.onDistributionChange.bind(this)} />
+                <InputDistribution normalSigmaSquare={false} value={distribution}
+                                   onChange={this.onDistributionChange.bind(this)} />
 
                 <strong>random seed</strong> =&nbsp;
                 <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
