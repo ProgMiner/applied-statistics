@@ -1,16 +1,17 @@
 import React from 'react';
 import mean from 'lodash/mean';
 import { InputText } from 'primereact/inputtext';
+import max from 'lodash/max';
 
 import { Task } from '../../components/Task/Task';
 import { DistributionType } from '../../utils/distribution';
-import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
+import { FetchingInputSample } from '../../components/FetchingInputSample/FetchingInputSample';
 import { InputDistributionType } from '../../components/InputDistributionType/InputDistributionType';
 import { normalizeNumber } from '../../utils/normalizeNumber';
-import { factorial } from '../../utils/factorial';
 import { verifyInteger } from '../../utils/verifyInteger';
 import { verifyNumber } from '../../utils/verifyNumber';
+import { factorial } from '../../utils/factorial';
 
 interface Task8State {
 
@@ -34,6 +35,10 @@ export class Task8 extends Task<{}, Task8State> {
                 break;
 
             case DistributionType.GEOMETRIC:
+                specificParametersCheck = verifyInteger(specificParameters.k) &&
+                    +specificParameters.k <= (max(sample) ?? Number.MAX_VALUE);
+                break;
+
             case DistributionType.POISSON:
                 break; // TODO
 
@@ -75,7 +80,7 @@ export class Task8 extends Task<{}, Task8State> {
     }
 
     protected renderParameters() {
-        const { distributionType, specificParameters } = this.state;
+        const { sample, distributionType, specificParameters } = this.state;
 
         let specificParametersOutput: React.ReactNode;
         switch (distributionType) {
@@ -101,6 +106,18 @@ export class Task8 extends Task<{}, Task8State> {
                 break;
 
             case DistributionType.GEOMETRIC:
+                specificParametersOutput = (
+                    <>
+                        Четвёртое задание:
+                        <br />
+
+                        <strong>k</strong> =&nbsp;
+                        <InputText value={specificParameters.k ?? ''} onChange={this.onSpecificParameterChange('k')} />
+                        <ValidationIcon valid={verifyInteger(specificParameters.k) && +specificParameters.k <= (max(sample) ?? Number.MAX_VALUE)} />
+                    </>
+                );
+                break;
+
             case DistributionType.POISSON:
                 specificParametersOutput = (
                     <>
@@ -184,6 +201,35 @@ export class Task8 extends Task<{}, Task8State> {
         );
     }
 
+    private renderGeometricAnswer(avg: number, sqAvg: number): React.ReactNode {
+        const { specificParameters } = this.state;
+
+        const k = +specificParameters.k;
+
+        const theta = 1 / avg;
+        const p = (1 - theta) ** (k - 1) * theta;
+
+        return (
+            <>
+                Оценка метода моментов <strong>&#952;&#770;<sub>1</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Оценка метода моментов <strong>&#952;&#770;<sub>2</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber((-1 + Math.sqrt(1 + 8 * sqAvg)) / (2 * sqAvg))} />
+                <br />
+
+                Оценка максимального правдоподобия <strong>&#952;&#770;</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Вероятность, что музыкант убежит, если в него попало ровно <strong>k = {k}</strong> помидоров:&nbsp;
+                <InputText readOnly value={normalizeNumber(p)} />
+                <br />
+            </>
+        );
+    }
+
     private renderUniformAnswer(avg: number, variance: number): React.ReactNode {
         const { sample, specificParameters } = this.state;
 
@@ -234,6 +280,8 @@ export class Task8 extends Task<{}, Task8State> {
                 return this.renderBinomialAnswer(avg, sampleVariance);
 
             case DistributionType.GEOMETRIC:
+                return this.renderGeometricAnswer(avg, sqAvg);
+
             case DistributionType.POISSON:
                 return (
                     <>
