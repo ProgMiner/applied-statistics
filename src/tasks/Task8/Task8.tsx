@@ -1,7 +1,6 @@
 import React from 'react';
 import mean from 'lodash/mean';
 import { InputText } from 'primereact/inputtext';
-import max from 'lodash/max';
 
 import { Task } from '../../components/Task/Task';
 import { DistributionType } from '../../utils/distribution';
@@ -36,15 +35,13 @@ export class Task8 extends Task<{}, Task8State> {
 
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
+            case DistributionType.EXPONENTIAL:
                 specificParametersCheck = verifyInteger(specificParameters.k) && +specificParameters.k > 0;
                 break;
 
             case DistributionType.UNIFORM:
                 specificParametersCheck = verifyNumber(specificParameters.a) && verifyNumber(specificParameters.b);
                 break;
-
-            case DistributionType.EXPONENTIAL:
-                break; // TODO
 
             case DistributionType.NORMAL:
                 specificParametersCheck = false;
@@ -104,6 +101,7 @@ export class Task8 extends Task<{}, Task8State> {
 
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
+            case DistributionType.EXPONENTIAL:
                 specificParametersOutput = (
                     <>
                         Четвёртое задание:
@@ -134,7 +132,6 @@ export class Task8 extends Task<{}, Task8State> {
                 );
                 break;
 
-            case DistributionType.EXPONENTIAL:
             case DistributionType.NORMAL:
                 specificParametersOutput = (
                     <>
@@ -186,7 +183,6 @@ export class Task8 extends Task<{}, Task8State> {
 
                 Вероятность, что завтра опоздает ровно <strong>k = {k}</strong> поездов:&nbsp;
                 <InputText readOnly value={normalizeNumber(p)} />
-                <br />
             </>
         );
     }
@@ -215,7 +211,6 @@ export class Task8 extends Task<{}, Task8State> {
 
                 Вероятность, что музыкант убежит, если в него попало ровно <strong>k = {k}</strong> помидоров:&nbsp;
                 <InputText readOnly value={normalizeNumber(p)} />
-                <br />
             </>
         );
     }
@@ -244,7 +239,6 @@ export class Task8 extends Task<{}, Task8State> {
 
                 Вероятность, что в течение случайных пяти минут поступит <strong>k = {k}</strong> звонков:&nbsp;
                 <InputText readOnly value={normalizeNumber(p)} />
-                <br />
             </>
         );
     }
@@ -278,7 +272,34 @@ export class Task8 extends Task<{}, Task8State> {
                 <strong>a = {specificParameters.a}</strong> до&nbsp;
                 <strong>b = {specificParameters.b}</strong>:&nbsp;
                 <InputText readOnly value={normalizeNumber((+specificParameters.b - +specificParameters.a) / (b - a))} />
+            </>
+        );
+    }
+
+    private renderExponentialAnswer(avg: number, sqAvg: number): React.ReactNode {
+        const { specificParameters } = this.state;
+
+        const k = +specificParameters.k;
+
+        const theta = 1 / avg;
+        const p = 1 - Math.exp(-theta * k);
+
+        return (
+            <>
+                Оценка метода моментов <strong>&#952;&#770;<sub>1</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
                 <br />
+
+                Оценка метода моментов <strong>&#952;&#770;<sub>2</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(Math.sqrt(2 / sqAvg))} />
+                <br />
+
+                Оценка максимального правдоподобия <strong>&#952;&#770;</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(theta)} />
+                <br />
+
+                Вероятность, что при следующем звонке с оператором поговорят меньше <strong>k = {k}</strong> секунд:&nbsp;
+                <InputText readOnly value={normalizeNumber(p)} />
             </>
         );
     }
@@ -308,6 +329,8 @@ export class Task8 extends Task<{}, Task8State> {
                 return this.renderUniformAnswer(avg, sampleVariance);
 
             case DistributionType.EXPONENTIAL:
+                return this.renderExponentialAnswer(avg, sqAvg);
+
             case DistributionType.NORMAL:
                 return (
                     <>
