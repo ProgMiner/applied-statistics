@@ -6,6 +6,7 @@ import { Week7 } from '../../weeks/Week7/Week7';
 import './App.css';
 import { Panel } from 'primereact/panel';
 import { Week8 } from '../../weeks/Week8/Week8';
+import { Week9 } from '../../weeks/Week9/Week9';
 import { Week10 } from '../../weeks/Week10/Week10';
 
 export class App extends React.Component {
@@ -17,8 +18,15 @@ export class App extends React.Component {
                     Это онлайн программа для решения задач из упражнений онлайн-курса Прикладная статистика.
                     <br />
 
+                    Отдельное спасибо авторам программ и таблиц, на основе которых была создана эта:&nbsp;
+                    <strong>Никита Черняк</strong> (6.2.2), <strong>Света Пелевина</strong> (7),&nbsp;
+                    <strong>Andrey Kharchuk</strong> (9: равномерное и нормальное распределения),&nbsp;
+                    <strong>Павел Нестерчук</strong> (9: распределения геометрическое и Пуассона).
+                    <br />
+                    <br />
+
                     Автор:&nbsp;
-                    <a href="https://byprogminer.ru/vk" target="_blank" rel="noopener noreferrer">Доморацкий Эридан</a>
+                    <a href="https://byprogminer.ru/vk" target="_blank" rel="noopener noreferrer">Доморацкий Эридан</a>.
                     <br />
 
                     <small>
@@ -35,6 +43,7 @@ export class App extends React.Component {
                 <Week6 />
                 <Week7 />
                 <Week8 />
+                <Week9 />
                 <Week10 />
             </div>
         );
