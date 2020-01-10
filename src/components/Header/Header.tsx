@@ -6,7 +6,7 @@ export class Header extends React.Component {
     render() {
         return (
             <div className="Header">
-                <Panel header="Добро пожаловать!" toggleable>
+                <Panel header="Добро пожаловать!">
                     Это онлайн программа для решения задач из упражнений онлайн-курса Прикладная статистика.
                     <br />
 

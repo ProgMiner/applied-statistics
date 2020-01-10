@@ -14,7 +14,7 @@ export class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <div className="sticky-container"><Header /></div>
+                <div className="margin-bottom"><Header /></div>
                 <div className="margin-bottom"><Week6 /></div>
                 <div className="margin-bottom"><Week7 /></div>
                 <div className="margin-bottom"><Week8 /></div>
