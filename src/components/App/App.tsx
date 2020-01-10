@@ -26,7 +26,8 @@ export class App extends React.Component {
                     <br />
 
                     Автор:&nbsp;
-                    <a href="https://byprogminer.ru/vk" target="_blank" rel="noopener noreferrer">Доморацкий Эридан</a>.
+                    <a href="https://byprogminer.ru/vk" target="_blank" rel="noopener noreferrer">Доморацкий Эридан</a>.&nbsp;
+                    <strong>В случае ошибки (например, вывод неправильного ответа), пишите, пожалуйста, в ЛС!</strong>
                     <br />
 
                     <small>
