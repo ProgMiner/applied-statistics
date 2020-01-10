@@ -11,6 +11,7 @@ import { normalizeNumber } from '../../utils/normalizeNumber';
 import { verifyInteger } from '../../utils/verifyInteger';
 import { verifyNumber } from '../../utils/verifyNumber';
 import { factorial } from '../../utils/factorial';
+import { erf } from '../../utils/erf';
 
 interface Task8State {
 
@@ -36,15 +37,12 @@ export class Task8 extends Task<{}, Task8State> {
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
             case DistributionType.EXPONENTIAL:
+            case DistributionType.NORMAL:
                 specificParametersCheck = verifyInteger(specificParameters.k) && +specificParameters.k > 0;
                 break;
 
             case DistributionType.UNIFORM:
                 specificParametersCheck = verifyNumber(specificParameters.a) && verifyNumber(specificParameters.b);
-                break;
-
-            case DistributionType.NORMAL:
-                specificParametersCheck = false;
                 break;
         }
 
@@ -102,6 +100,7 @@ export class Task8 extends Task<{}, Task8State> {
             case DistributionType.GEOMETRIC:
             case DistributionType.POISSON:
             case DistributionType.EXPONENTIAL:
+            case DistributionType.NORMAL:
                 specificParametersOutput = (
                     <>
                         Четвёртое задание:
@@ -128,14 +127,6 @@ export class Task8 extends Task<{}, Task8State> {
                         <strong>b</strong> =&nbsp;
                         <InputText value={specificParameters.b ?? ''} onChange={this.onSpecificParameterChange('b')} />
                         <ValidationIcon valid={verifyNumber(specificParameters.b)} />
-                    </>
-                );
-                break;
-
-            case DistributionType.NORMAL:
-                specificParametersOutput = (
-                    <>
-                        // TODO
                     </>
                 );
                 break;
@@ -219,14 +210,12 @@ export class Task8 extends Task<{}, Task8State> {
         const { specificParameters } = this.state;
 
         const k = +specificParameters.k;
-
-        const theta = avg;
-        const p = Math.exp(-theta) * theta ** k / factorial(k);
+        const p = Math.exp(-avg) * avg ** k / factorial(k);
 
         return (
             <>
                 Оценка метода моментов <strong>&#952;&#770;<sub>1</sub></strong>:&nbsp;
-                <InputText readOnly value={normalizeNumber(theta)} />
+                <InputText readOnly value={normalizeNumber(avg)} />
                 <br />
 
                 Оценка метода моментов <strong>&#952;&#770;<sub>2</sub></strong>:&nbsp;
@@ -234,7 +223,7 @@ export class Task8 extends Task<{}, Task8State> {
                 <br />
 
                 Оценка максимального правдоподобия <strong>&#952;&#770;</strong>:&nbsp;
-                <InputText readOnly value={normalizeNumber(theta)} />
+                <InputText readOnly value={normalizeNumber(avg)} />
                 <br />
 
                 Вероятность, что в течение случайных пяти минут поступит <strong>k = {k}</strong> звонков:&nbsp;
@@ -304,6 +293,32 @@ export class Task8 extends Task<{}, Task8State> {
         );
     }
 
+    private renderNormalAnswer(avg: number, variance: number): React.ReactNode {
+        const { specificParameters } = this.state;
+
+        const k = +specificParameters.k;
+        const p = (1 + erf((k - avg) / Math.sqrt(2 * variance))) / 2;
+
+        return (
+            <>
+                Оценка метода моментов <strong>&#952;&#770;<sub>1</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(avg)} />
+                <br />
+
+                Оценка метода моментов <strong>&#952;&#770;<sub>2</sub></strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(variance)} />
+                <br />
+
+                Оценка максимального правдоподобия <strong>&#952;&#770;</strong>:&nbsp;
+                <InputText readOnly value={normalizeNumber(avg)} />
+                <br />
+
+                Вероятность, что в случайно купленной бутылке молока менее <strong>k = {k}</strong> миллилитров молока:&nbsp;
+                <InputText readOnly value={normalizeNumber(p)} />
+            </>
+        );
+    }
+
     protected async renderAnswer() {
         const { sample, distributionType } = this.state;
 
@@ -332,11 +347,7 @@ export class Task8 extends Task<{}, Task8State> {
                 return this.renderExponentialAnswer(avg, sqAvg);
 
             case DistributionType.NORMAL:
-                return (
-                    <>
-                        // TODO
-                    </>
-                );
+                return this.renderNormalAnswer(avg, sampleVariance);
         }
     }
 }
