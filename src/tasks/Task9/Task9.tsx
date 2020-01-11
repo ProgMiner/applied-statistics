@@ -289,7 +289,7 @@ export class Task9 extends Task<{}, Task9State> {
                 <br />
 
                 Какое минимальное количество молока можно ожидать потребителю:&nbsp;
-                <InputText readOnly value={normalizeNumber(a - 3 * Math.sqrt(end))} />
+                <InputText readOnly value={normalizeNumber(a - Math.sqrt(end))} />
             </>
         );
     }
