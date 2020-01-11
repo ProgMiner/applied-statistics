@@ -6,17 +6,19 @@ import { Distribution, DistributionType } from '../../utils/distribution';
 import { InputDistribution } from '../../components/InputDistribution/InputDistribution';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../utils/verifyNumber';
+import { verifyInteger } from '../../utils/verifyInteger';
 
 interface Task61State {
 
     n: string;
     distribution?: Distribution;
     randomSeed: string;
+    count: string;
 }
 
 export class Task61 extends Task<{}, Task61State> {
 
-    state: Task61State = { n: '', randomSeed: '' };
+    state: Task61State = { n: '', randomSeed: '', count: '5' };
 
     private onNChange(e: React.FormEvent<HTMLInputElement>) {
         this.setState({
@@ -38,14 +40,22 @@ export class Task61 extends Task<{}, Task61State> {
         });
     }
 
-    protected checkParameters(): boolean {
-        const { n, distribution, randomSeed } = this.state;
+    private onCountChange(e: React.FormEvent<HTMLInputElement>) {
+        this.setState({
+            ...this.state,
 
-        return verifyNumber(n) && distribution !== undefined && verifyNumber(randomSeed);
+            count: e.currentTarget.value.trim()
+        });
+    }
+
+    protected checkParameters(): boolean {
+        const { n, distribution, randomSeed, count } = this.state;
+
+        return verifyNumber(n) && distribution !== undefined && verifyNumber(randomSeed) && verifyInteger(count);
     }
 
     protected renderParameters() {
-        const { n, distribution, randomSeed } = this.state;
+        const { n, distribution, randomSeed, count } = this.state;
 
         return (
             <>
@@ -64,7 +74,7 @@ export class Task61 extends Task<{}, Task61State> {
                 <InputDistribution normalSigmaSquare={false} value={distribution}
                                    onChange={this.onDistributionChange.bind(this)} />
 
-                <div className="p-inputgroup">
+                <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
                         <strong>random seed</strong> =
                     </span>
@@ -75,12 +85,24 @@ export class Task61 extends Task<{}, Task61State> {
                         <ValidationIcon valid={verifyNumber(randomSeed)} />
                     </span>
                 </div>
+
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        Количество первых и последних элементов:
+                    </span>
+
+                    <InputText value={count} onChange={this.onCountChange.bind(this)} />
+
+                    <span className="p-inputgroup-addon">
+                        <ValidationIcon valid={verifyInteger(randomSeed)} />
+                    </span>
+                </div>
             </>
         );
     }
 
     protected async renderAnswer() {
-        const { n, distribution, randomSeed } = this.state;
+        const { n, distribution, randomSeed, count } = this.state;
 
         if (distribution === undefined) {
             return;
@@ -122,8 +144,8 @@ np.random.seed(${randomSeed})
         }
 
         code += `
-print(",".join([str(round(sample[i], 2)) for i in range(5)]))
-print(",".join([str(round(sample[${+n - 5} + i], 2)) for i in range(5)]))
+print(",".join([str(round(sample[i], 2)) for i in range(${count})]))
+print(",".join([str(round(sample[${+n - +count} + i], 2)) for i in range(${count})]))
 print(sum(sample)/len(sample))
 `;
 
