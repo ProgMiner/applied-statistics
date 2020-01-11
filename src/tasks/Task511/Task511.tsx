@@ -174,7 +174,7 @@ export class Task511 extends Task<{}, Task511State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#951; = {expr.a || 'a'} &#8901; &#958;<sup>{expr.p || 'p'}</sup> + {expr.b || 'b'}
+                        &#951; = expr.a &#8901; &#958;<sup>expr.p</sup> + expr.b
                     </span>
 
                     {reducedN.map((v, i) => (
