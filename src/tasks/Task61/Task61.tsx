@@ -8,6 +8,8 @@ import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../utils/verifyNumber';
 import { verifyInteger } from '../../utils/verifyInteger';
 
+import pythonTab from './Python.png';
+
 interface Task61State {
 
     n: string;
@@ -151,6 +153,20 @@ print(sum(sample)/len(sample))
 
         return (
             <>
+                {+count === 3 && (
+                    <>
+                        <strong>Внимание!</strong>{' '}
+
+                        Убедитесь, что вы открыли в курсе вкладку <strong>Упражнение 6.1 (Python)</strong>,{' '}
+                        а не Упражнение 6.1 (<strong>Excel</strong>). Эта вкладка <strong>предпоследняя</strong>{' '}
+                        в разделе!
+                        <br />
+
+                        <img src={pythonTab} alt="вкладка Python" />
+                        <hr />
+                    </>
+                )}
+
                 <div className="margin-bottom">
                     Выполните следущий код в Python-интерпретаторе (например, на сайте <a href="https://repl.it" target="_blank" rel="noopener noreferrer">repl.it</a>):
                 </div>
