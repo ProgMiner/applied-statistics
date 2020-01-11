@@ -8,7 +8,7 @@ import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../utils/verifyNumber';
 import { verifyInteger } from '../../utils/verifyInteger';
 
-import pythonTab from './Python.png';
+import pythonTab from './pythonTab.png';
 
 interface Task61State {
 

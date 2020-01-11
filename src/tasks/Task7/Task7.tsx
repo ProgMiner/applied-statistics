@@ -122,15 +122,15 @@ export class Task7 extends Task<{}, Task7State> {
         intervalIndices: ['', '', '']
     };
 
-    private checkIndices(indices: [string, string, string], max: number = 10) {
+    private static checkIndices(indices: [string, string, string], max: number = 10) {
         return indices.filter(verifyInteger).map(Number).filter(v => v > 0 && v <= max).length === 3;
     }
 
     protected checkParameters(): boolean {
         const { cities, sampleIndices, intervalIndices } = this.state;
 
-        return this.checkIndices(sampleIndices, avgSalary.length - cities.length) &&
-            this.checkIndices(intervalIndices);
+        return Task7.checkIndices(sampleIndices, avgSalary.length - cities.length) &&
+            Task7.checkIndices(intervalIndices);
     }
 
     private onCitiesChange(e: { value: number[] }) {
@@ -172,7 +172,7 @@ export class Task7 extends Task<{}, Task7State> {
                     {[0, 1, 2].map(i => (
                         <React.Fragment key={i}>
                             {i > 0 && (
-                                <span className="p-inputgroup-addon" />
+                                <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
                             <InputText value={sampleIndices[i]}
@@ -181,7 +181,7 @@ export class Task7 extends Task<{}, Task7State> {
                     ))}
 
                     <span className="p-inputgroup-addon">
-                        <ValidationIcon valid={this.checkIndices(sampleIndices, avgSalary.length - cities.length)} />
+                        <ValidationIcon valid={Task7.checkIndices(sampleIndices, avgSalary.length - cities.length)} />
                     </span>
                 </div>
 
@@ -193,7 +193,7 @@ export class Task7 extends Task<{}, Task7State> {
                     {[0, 1, 2].map(i => (
                         <React.Fragment key={i}>
                             {i > 0 && (
-                                <span className="p-inputgroup-addon" />
+                                <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
                             <InputText value={intervalIndices[i]}
@@ -202,7 +202,7 @@ export class Task7 extends Task<{}, Task7State> {
                     ))}
 
                     <span className="p-inputgroup-addon">
-                        <ValidationIcon valid={this.checkIndices(intervalIndices)} />
+                        <ValidationIcon valid={Task7.checkIndices(intervalIndices)} />
                     </span>
                 </div>
             </>

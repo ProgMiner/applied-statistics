@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/applied-statistics/static/css/main.59db5d85.chunk.css",
-    "main.js": "/applied-statistics/static/js/main.4d44fe70.chunk.js",
-    "main.js.map": "/applied-statistics/static/js/main.4d44fe70.chunk.js.map",
-    "runtime-main.js": "/applied-statistics/static/js/runtime-main.cb3af7a4.js",
-    "runtime-main.js.map": "/applied-statistics/static/js/runtime-main.cb3af7a4.js.map",
+    "main.css": "/applied-statistics/static/css/main.73391177.chunk.css",
+    "main.js": "/applied-statistics/static/js/main.e57ecffd.chunk.js",
+    "main.js.map": "/applied-statistics/static/js/main.e57ecffd.chunk.js.map",
+    "runtime-main.js": "/applied-statistics/static/js/runtime-main.26c0cd94.js",
+    "runtime-main.js.map": "/applied-statistics/static/js/runtime-main.26c0cd94.js.map",
     "static/css/2.72a5daec.chunk.css": "/applied-statistics/static/css/2.72a5daec.chunk.css",
-    "static/js/2.f01ffeb3.chunk.js": "/applied-statistics/static/js/2.f01ffeb3.chunk.js",
-    "static/js/2.f01ffeb3.chunk.js.map": "/applied-statistics/static/js/2.f01ffeb3.chunk.js.map",
+    "static/js/2.ddf5f5f9.chunk.js": "/applied-statistics/static/js/2.ddf5f5f9.chunk.js",
+    "static/js/2.ddf5f5f9.chunk.js.map": "/applied-statistics/static/js/2.ddf5f5f9.chunk.js.map",
     "index.html": "/applied-statistics/index.html",
-    "precache-manifest.c5e09e26b9912d31204fef16cc4857e5.js": "/applied-statistics/precache-manifest.c5e09e26b9912d31204fef16cc4857e5.js",
+    "precache-manifest.5b88d521e2d01aa9a8680fb3eeda4a0b.js": "/applied-statistics/precache-manifest.5b88d521e2d01aa9a8680fb3eeda4a0b.js",
     "service-worker.js": "/applied-statistics/service-worker.js",
     "static/css/2.72a5daec.chunk.css.map": "/applied-statistics/static/css/2.72a5daec.chunk.css.map",
-    "static/css/main.59db5d85.chunk.css.map": "/applied-statistics/static/css/main.59db5d85.chunk.css.map",
-    "static/js/2.f01ffeb3.chunk.js.LICENSE": "/applied-statistics/static/js/2.f01ffeb3.chunk.js.LICENSE",
-    "static/media/Python.png": "/applied-statistics/static/media/Python.137e3c15.png",
+    "static/css/main.73391177.chunk.css.map": "/applied-statistics/static/css/main.73391177.chunk.css.map",
+    "static/js/2.ddf5f5f9.chunk.js.LICENSE": "/applied-statistics/static/js/2.ddf5f5f9.chunk.js.LICENSE",
     "static/media/primereact.min.css": "/applied-statistics/static/media/line.567f5738.gif",
     "static/media/theme.css": "/applied-statistics/static/media/open-sans-v15-latin-regular.cffb686d.woff2",
-    "static/media/primeicons.css": "/applied-statistics/static/media/primeicons.e5e0e944.svg"
+    "static/media/primeicons.css": "/applied-statistics/static/media/primeicons.e5e0e944.svg",
+    "static/media/pythonTab.png": "/applied-statistics/static/media/pythonTab.137e3c15.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.cb3af7a4.js",
+    "static/js/runtime-main.26c0cd94.js",
     "static/css/2.72a5daec.chunk.css",
-    "static/js/2.f01ffeb3.chunk.js",
-    "static/css/main.59db5d85.chunk.css",
-    "static/js/main.4d44fe70.chunk.js"
+    "static/js/2.ddf5f5f9.chunk.js",
+    "static/css/main.73391177.chunk.css",
+    "static/js/main.e57ecffd.chunk.js"
   ]
 }
