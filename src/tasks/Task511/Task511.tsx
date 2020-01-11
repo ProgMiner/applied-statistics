@@ -13,8 +13,8 @@ interface Task511State {
     p: [string, string, string, string];
     expr: {
         a: string;
-        b: string;
         p: string;
+        b: string;
     }
 }
 
@@ -23,7 +23,7 @@ export class Task511 extends Task<{}, Task511State> {
     state: Task511State = {
         e: ['', '', '', ''],
         p: ['', '', '', ''],
-        expr: { a: '', b: '', p: '' }
+        expr: { a: '', p: '', b: '' }
     };
 
     private static checkRow(row: [string, string, string, string]) {
@@ -34,7 +34,7 @@ export class Task511 extends Task<{}, Task511State> {
         const { e, p, expr } = this.state;
 
         return Task511.checkRow(e) && Task511.checkRow(p) &&
-            verifyNumber(expr.a) && verifyNumber(expr.b) && verifyNumber(expr.p);
+            verifyNumber(expr.a) && verifyNumber(expr.p) && verifyNumber(expr.b);
     }
 
     private onRowChange(param: 'e' | 'p', i: number) {
@@ -188,7 +188,7 @@ export class Task511 extends Task<{}, Task511State> {
                     ))}
                 </div>
 
-                <div className="p-inputgroup half-margin-bottom">
+                <div className="p-inputgroup">
                     <span className="p-inputgroup-addon">
                         P
                     </span>
