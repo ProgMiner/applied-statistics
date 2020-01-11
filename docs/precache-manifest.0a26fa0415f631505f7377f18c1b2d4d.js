@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cbde48d735cde5a74d1ceac3f3024d65",
+    "revision": "605d1f46d81b835601a7d464fa909dda",
     "url": "/applied-statistics/index.html"
   },
   {
-    "revision": "9475ed4acb597f09e79b",
+    "revision": "9fecfaa028099a2c8a8a",
     "url": "/applied-statistics/static/css/2.72a5daec.chunk.css"
   },
   {
-    "revision": "03714571b09c14cf3a5c",
+    "revision": "3caee130c9c4917d7a35",
     "url": "/applied-statistics/static/css/main.73391177.chunk.css"
   },
   {
-    "revision": "9475ed4acb597f09e79b",
-    "url": "/applied-statistics/static/js/2.c32e38bf.chunk.js"
+    "revision": "9fecfaa028099a2c8a8a",
+    "url": "/applied-statistics/static/js/2.df40fb77.chunk.js"
   },
   {
     "revision": "f032203ca460334c00de541c30a6078a",
-    "url": "/applied-statistics/static/js/2.c32e38bf.chunk.js.LICENSE"
+    "url": "/applied-statistics/static/js/2.df40fb77.chunk.js.LICENSE"
   },
   {
-    "revision": "03714571b09c14cf3a5c",
-    "url": "/applied-statistics/static/js/main.b76171ad.chunk.js"
+    "revision": "3caee130c9c4917d7a35",
+    "url": "/applied-statistics/static/js/main.295a642a.chunk.js"
   },
   {
     "revision": "2c7e314716e44d7dcf0b",

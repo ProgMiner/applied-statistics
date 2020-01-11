@@ -58,7 +58,7 @@ export class Task512 extends Task<{}, Task512State> {
                         </span>
                     </div>
 
-                    <div className="p-inputgroup half-margin-bottom">
+                    <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
                             b =
                         </span>
@@ -86,7 +86,7 @@ export class Task512 extends Task<{}, Task512State> {
                         </span>
                     </div>
 
-                    <div className="p-inputgroup half-margin-bottom">
+                    <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
                             b =
                         </span>
@@ -115,7 +115,7 @@ export class Task512 extends Task<{}, Task512State> {
                     <InputText readOnly value={`${+b[1] - +a[1]} / ${+b[0] - +a[0]}`} />
                 </div>
 
-                <div className="p-inputgroup half-margin-bottom">
+                <div className="p-inputgroup">
                     <span className="p-inputgroup-addon">
                         &#952;<sub>1</sub> =
                     </span>
