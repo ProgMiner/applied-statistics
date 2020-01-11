@@ -75,7 +75,7 @@ export class Task523 extends Task<{}, Task523State> {
                 </div>
 
                 <Fieldset legend={
-                    <>Найти D({a || 'a'}&#958;<sub>1</sub> + {b || 'b'}&#958;<sub>2</sub> + {c || 'c'})</>
+                    <>Вычислить D({a || 'a'}&#958;<sub>1</sub> + {b || 'b'}&#958;<sub>2</sub> + {c || 'c'})</>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
