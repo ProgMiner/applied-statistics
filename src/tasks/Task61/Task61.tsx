@@ -94,7 +94,7 @@ export class Task61 extends Task<{}, Task61State> {
                     <InputText value={count} onChange={this.onCountChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
-                        <ValidationIcon valid={verifyInteger(randomSeed)} />
+                        <ValidationIcon valid={verifyInteger(count)} />
                     </span>
                 </div>
             </>
