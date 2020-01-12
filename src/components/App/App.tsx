@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Header } from '../Header/Header';
+import { Week4 } from '../../weeks/Week4/Week4';
 import { Week5 } from '../../weeks/Week5/Week5';
 import { Week6 } from '../../weeks/Week6/Week6';
 import { Week7 } from '../../weeks/Week7/Week7';
@@ -16,6 +17,7 @@ export class App extends React.Component {
         return (
             <div className="App">
                 <div className="margin-bottom"><Header /></div>
+                <div className="margin-bottom"><Week4 /></div>
                 <div className="margin-bottom"><Week5 /></div>
                 <div className="margin-bottom"><Week6 /></div>
                 <div className="margin-bottom"><Week7 /></div>

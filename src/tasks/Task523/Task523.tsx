@@ -1,10 +1,10 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
+import { Fieldset } from 'primereact/fieldset';
 
 import { Task } from '../../components/Task/Task';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../utils/verifyNumber';
-import { Fieldset } from 'primereact/fieldset';
 
 interface Task523State {
 

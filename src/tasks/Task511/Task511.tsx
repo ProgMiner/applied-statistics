@@ -1,11 +1,11 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
+import { Fieldset } from 'primereact/fieldset';
 import isEqual from 'lodash/isEqual';
 
 import { Task } from '../../components/Task/Task';
 import { ValidationIcon } from '../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../utils/verifyNumber';
-import { Fieldset } from 'primereact/fieldset';
 
 interface Task511State {
 

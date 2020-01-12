@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/applied-statistics/static/css/main.73391177.chunk.css",
-    "main.js": "/applied-statistics/static/js/main.597bcafb.chunk.js",
-    "main.js.map": "/applied-statistics/static/js/main.597bcafb.chunk.js.map",
+    "main.js": "/applied-statistics/static/js/main.6b90a1c3.chunk.js",
+    "main.js.map": "/applied-statistics/static/js/main.6b90a1c3.chunk.js.map",
     "runtime-main.js": "/applied-statistics/static/js/runtime-main.26c0cd94.js",
     "runtime-main.js.map": "/applied-statistics/static/js/runtime-main.26c0cd94.js.map",
     "static/css/2.72a5daec.chunk.css": "/applied-statistics/static/css/2.72a5daec.chunk.css",
-    "static/js/2.a2189ed0.chunk.js": "/applied-statistics/static/js/2.a2189ed0.chunk.js",
-    "static/js/2.a2189ed0.chunk.js.map": "/applied-statistics/static/js/2.a2189ed0.chunk.js.map",
+    "static/js/2.8a104603.chunk.js": "/applied-statistics/static/js/2.8a104603.chunk.js",
+    "static/js/2.8a104603.chunk.js.map": "/applied-statistics/static/js/2.8a104603.chunk.js.map",
     "index.html": "/applied-statistics/index.html",
-    "precache-manifest.d2f5c4d61314e9787f6071bda967cc34.js": "/applied-statistics/precache-manifest.d2f5c4d61314e9787f6071bda967cc34.js",
+    "precache-manifest.c9c4f411d2b5d3b466cf5ebce3e3f1df.js": "/applied-statistics/precache-manifest.c9c4f411d2b5d3b466cf5ebce3e3f1df.js",
     "service-worker.js": "/applied-statistics/service-worker.js",
     "static/css/2.72a5daec.chunk.css.map": "/applied-statistics/static/css/2.72a5daec.chunk.css.map",
     "static/css/main.73391177.chunk.css.map": "/applied-statistics/static/css/main.73391177.chunk.css.map",
-    "static/js/2.a2189ed0.chunk.js.LICENSE": "/applied-statistics/static/js/2.a2189ed0.chunk.js.LICENSE",
+    "static/js/2.8a104603.chunk.js.LICENSE": "/applied-statistics/static/js/2.8a104603.chunk.js.LICENSE",
     "static/media/primereact.min.css": "/applied-statistics/static/media/line.567f5738.gif",
     "static/media/theme.css": "/applied-statistics/static/media/open-sans-v15-latin-regular.cffb686d.woff2",
     "static/media/primeicons.css": "/applied-statistics/static/media/primeicons.e5e0e944.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.26c0cd94.js",
     "static/css/2.72a5daec.chunk.css",
-    "static/js/2.a2189ed0.chunk.js",
+    "static/js/2.8a104603.chunk.js",
     "static/css/main.73391177.chunk.css",
-    "static/js/main.597bcafb.chunk.js"
+    "static/js/main.6b90a1c3.chunk.js"
   ]
 }
