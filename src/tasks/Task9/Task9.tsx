@@ -195,7 +195,8 @@ export class Task9 extends Task<{}, Task9State> {
                 {Task9.renderGeneralPart(avg / m - c, theta)}
                 <br />
 
-                Среднее количество опаздавших поездов при максимально возможном значении &#952; и <strong>m = {m}</strong>:&nbsp;
+                Среднее количество опаздавших поездов при максимально возможном значении <strong>&#952;</strong>{' '}
+                и <strong>m = {m}</strong>:&nbsp;
                 <InputText readOnly value={Math.round(theta * m)} />
             </>
         );
@@ -238,7 +239,7 @@ export class Task9 extends Task<{}, Task9State> {
         );
     }
 
-    private static renderUniformAnswer(avg: number, quantile: number, sqrtN: number, first: number, last: number): React.ReactNode {
+    private static renderUniformAnswer(avg: number, quantile: number, sqrtN: number, first: number, last: number) {
         const c = quantile * (last - first) / (Math.sqrt(3) * sqrtN);
 
         const start = 2 * avg - c - last;

@@ -51,7 +51,7 @@ export class Task522 extends Task<{}, Task522State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#917;&#958;<sub>1</sub> =
+                        <strong>&#917;&#958;<sub>1</sub></strong> =
                     </span>
 
                     <InputText value={e[0]} onChange={this.onEChange(0)} />
@@ -63,7 +63,7 @@ export class Task522 extends Task<{}, Task522State> {
 
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#917;&#958;<sub>2</sub> =
+                        <strong>&#917;&#958;<sub>2</sub></strong> =
                     </span>
 
                     <InputText value={e[1]} onChange={this.onEChange(1)} />
@@ -74,11 +74,11 @@ export class Task522 extends Task<{}, Task522State> {
                 </div>
 
                 <Fieldset legend={
-                    <>Найти &#917;({a || 'a'}&#958;<sub>1</sub> + {b || 'b'}&#958;<sub>2</sub>)</>
+                    <>Найти <strong>&#917;({a || 'a'}&#958;<sub>1</sub> + {b || 'b'}&#958;<sub>2</sub>)</strong></>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            a =
+                            <strong>a</strong> =
                         </span>
 
                         <InputText value={a} onChange={this.onParamChange('a')} />
@@ -90,7 +90,7 @@ export class Task522 extends Task<{}, Task522State> {
 
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            b =
+                            <strong>b</strong> =
                         </span>
 
                         <InputText value={b} onChange={this.onParamChange('b')} />
@@ -111,7 +111,7 @@ export class Task522 extends Task<{}, Task522State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#917;({a}&#958;<sub>1</sub> + {b}&#958;<sub>2</sub>) =
+                        <strong>&#917;({a}&#958;<sub>1</sub> + {b}&#958;<sub>2</sub>)</strong> =
                     </span>
 
                     <InputText readOnly value={+a * +e[0] + +b * +e[1]} />
@@ -119,7 +119,7 @@ export class Task522 extends Task<{}, Task522State> {
 
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#917;(&#958;<sub>1</sub>&#958;<sub>2</sub>) =
+                        <strong>&#917;(&#958;<sub>1</sub>&#958;<sub>2</sub>)</strong> =
                     </span>
 
                     <InputText value={+e[0] * +e[1]} readOnly />

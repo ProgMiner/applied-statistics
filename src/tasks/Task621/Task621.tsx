@@ -86,7 +86,7 @@ export class Task621 extends Task<{}, Task621State> {
                         <tr key={String(f)}>
                             {counts.filter(f).map(v => (
                                 <td key={v.value}>
-                                    P(&#958;<sup>*</sup> = {v.value}) =
+                                    <strong>P(&#958;<sup>*</sup> = {v.value})</strong> ={' '}
                                     <InputText readOnly value={v.count === 0 ? '0' : `${v.count} / ${sample.length}`} />
                                 </td>
                             ))}

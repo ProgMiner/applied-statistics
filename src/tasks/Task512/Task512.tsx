@@ -44,11 +44,11 @@ export class Task512 extends Task<{}, Task512State> {
         return (
             <>
                 <Fieldset legend={
-                    <>&#958; ~ U<sub>{a[0] || 'a'},{b[0] || 'b'}</sub></>
+                    <><strong>&#958;</strong> ~ <strong>U<sub>{a[0] || 'a'},{b[0] || 'b'}</sub></strong></>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            a =
+                            <strong>a</strong> =
                         </span>
 
                         <InputText value={a[0]} onChange={this.onParamChange('a', 0)} />
@@ -60,7 +60,7 @@ export class Task512 extends Task<{}, Task512State> {
 
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            b =
+                            <strong>b</strong> =
                         </span>
 
                         <InputText value={b[0]} onChange={this.onParamChange('b', 0)} />
@@ -72,11 +72,11 @@ export class Task512 extends Task<{}, Task512State> {
                 </Fieldset>
 
                 <Fieldset legend={
-                    <>&#951; ~ U<sub>{a[1] || 'a'},{b[1] || 'b'}</sub></>
+                    <><strong>&#951;</strong> ~ <strong>U<sub>{a[1] || 'a'},{b[1] || 'b'}</sub></strong></>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            a =
+                            <strong>a</strong> =
                         </span>
 
                         <InputText value={a[1]} onChange={this.onParamChange('a', 1)} />
@@ -88,7 +88,7 @@ export class Task512 extends Task<{}, Task512State> {
 
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            b =
+                            <strong>b</strong> =
                         </span>
 
                         <InputText value={b[1]} onChange={this.onParamChange('b', 1)} />
@@ -109,7 +109,7 @@ export class Task512 extends Task<{}, Task512State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#952;<sub>0</sub> =
+                        <strong>&#952;<sub>0</sub></strong> =
                     </span>
 
                     <InputText readOnly value={`${+b[1] - +a[1]} / ${+b[0] - +a[0]}`} />
@@ -117,7 +117,7 @@ export class Task512 extends Task<{}, Task512State> {
 
                 <div className="p-inputgroup">
                     <span className="p-inputgroup-addon">
-                        &#952;<sub>1</sub> =
+                        <strong>&#952;<sub>1</sub></strong> =
                     </span>
 
                     <InputText value={`${+a[0] * +a[1] - +a[0] * +b[1] + +a[1] * (+b[0] - +a[0])} / ${+b[0] - +a[0]}`}

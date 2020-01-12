@@ -67,7 +67,7 @@ export class Task511 extends Task<{}, Task511State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#958;
+                        <strong>&#958;</strong>
                     </span>
 
                     {[0, 1, 2, 3].map(i => (
@@ -87,7 +87,7 @@ export class Task511 extends Task<{}, Task511State> {
 
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        P
+                        <strong>P</strong>
                     </span>
 
                     {[0, 1, 2, 3].map(i => (
@@ -106,11 +106,16 @@ export class Task511 extends Task<{}, Task511State> {
                 </div>
 
                 <Fieldset legend={
-                    <>&#951; = {expr.a || 'a'} &#8901; &#958;<sup>{expr.p || 'p'}</sup> + {expr.b || 'b'}</>
+                    <>
+                        <strong>&#951;</strong> ={' '}
+                        <strong>{expr.a || 'a'}</strong> &#8901;{' '}
+                        <strong>&#958;<sup>{expr.p || 'p'}</sup></strong> +{' '}
+                        <strong>{expr.b || 'b'}</strong>
+                    </>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            a =
+                            <strong>a</strong> =
                         </span>
 
                         <InputText value={expr.a} onChange={this.onExprChange('a')} />
@@ -122,7 +127,7 @@ export class Task511 extends Task<{}, Task511State> {
 
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            p =
+                            <strong>p</strong> =
                         </span>
 
                         <InputText value={expr.p} onChange={this.onExprChange('p')} />
@@ -134,7 +139,7 @@ export class Task511 extends Task<{}, Task511State> {
 
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            b =
+                            <strong>b</strong> =
                         </span>
 
                         <InputText value={expr.b} onChange={this.onExprChange('b')} />
@@ -174,7 +179,7 @@ export class Task511 extends Task<{}, Task511State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        &#951; = expr.a &#8901; &#958;<sup>expr.p</sup> + expr.b
+                        <strong>&#951;</strong> = <strong>{expr.a} &#8901; &#958;<sup>{expr.p}</sup> + {expr.b}</strong>
                     </span>
 
                     {reducedN.map((v, i) => (
@@ -190,7 +195,7 @@ export class Task511 extends Task<{}, Task511State> {
 
                 <div className="p-inputgroup">
                     <span className="p-inputgroup-addon">
-                        P
+                        <strong>P</strong>
                     </span>
 
                     {reducedN.map((v, i) => (
