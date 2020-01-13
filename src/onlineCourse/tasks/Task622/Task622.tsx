@@ -3,7 +3,7 @@ import mean from 'lodash/mean';
 import { InputText } from 'primereact/inputtext';
 
 import { Task } from '../../../components/Task/Task';
-import { Distribution, DistributionType } from '../../../utils/distribution';
+import { calcVariance, Distribution, DistributionType } from '../../../utils/distribution';
 import { InputDistribution } from '../../../components/InputDistribution/InputDistribution';
 import { FetchingInputSample } from '../../../components/FetchingInputSample/FetchingInputSample';
 import { sampleVariance } from '../../../utils/sampleVariance';
@@ -92,6 +92,7 @@ export class Task622 extends Task<{}, Task622State> {
         const d10 = sampleVariance(sample10, e10);
         const d10000 = sampleVariance(sample10000, e10000);
 
+        const variance = calcVariance(distribution);
         let output: (v: number, e: number, d: number) => React.ReactNode;
         switch (distribution.type) {
             case DistributionType.BERNOULLI:
@@ -101,7 +102,7 @@ export class Task622 extends Task<{}, Task622State> {
                     e,
                     distribution.params.p,
                     d,
-                    distribution.params.p * (1 - distribution.params.p)
+                    variance
                 );
                 break;
 
@@ -112,7 +113,7 @@ export class Task622 extends Task<{}, Task622State> {
                     e / distribution.params.n,
                     distribution.params.p,
                     d,
-                    distribution.params.n * distribution.params.p * (1 - distribution.params.p)
+                    variance
                 );
                 break;
 
@@ -123,7 +124,7 @@ export class Task622 extends Task<{}, Task622State> {
                     1 / e,
                     distribution.params.p,
                     d,
-                    (1 - distribution.params.p) / distribution.params.p ** 2
+                    variance
                 );
                 break;
 
@@ -134,7 +135,7 @@ export class Task622 extends Task<{}, Task622State> {
                     e,
                     distribution.params.l,
                     d,
-                    distribution.params.l
+                    variance
                 );
                 break;
 
@@ -145,7 +146,7 @@ export class Task622 extends Task<{}, Task622State> {
                     2 * e - distribution.params.b,
                     distribution.params.a,
                     d,
-                    (distribution.params.b - distribution.params.a) ** 2 / 12
+                    variance
                 );
                 break;
 
@@ -156,7 +157,7 @@ export class Task622 extends Task<{}, Task622State> {
                     1 / e,
                     distribution.params.l,
                     d,
-                    1 / distribution.params.l ** 2
+                    variance
                 );
                 break;
 
@@ -167,7 +168,7 @@ export class Task622 extends Task<{}, Task622State> {
                     e,
                     distribution.params.a,
                     d,
-                    distribution.params.d
+                    variance
                 );
                 break;
         }
