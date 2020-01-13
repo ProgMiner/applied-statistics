@@ -47,7 +47,7 @@ export class App extends React.Component {
                             <AccordionTab header="Задача 4"><Task4 /></AccordionTab>
                             <AccordionTab header="Задача 5"><Task5 /></AccordionTab>
                             <AccordionTab header="Задача 6"><Task6 /></AccordionTab>
-                            <AccordionTab disabled header="Задача 7 (coming soon)"></AccordionTab>
+                            <AccordionTab disabled header="Задача 7 (coming soon)" />
                             <AccordionTab disabled header="Задача 8 (coming soon)"></AccordionTab>
                         </Accordion>
                     </TabPanel>
