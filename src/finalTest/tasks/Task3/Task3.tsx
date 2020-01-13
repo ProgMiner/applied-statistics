@@ -57,12 +57,12 @@ export class Task3 extends FinalTask<{}, Task3State> {
                 <br />
 
                 <Fieldset legend="Пример">
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{ textAlign: 'center' }}>
                         <img src={exampleImage} alt="картинка из примера" />
                     </div>
 
-                    В примере: <strong>ξ ∈ [0.5, 1]</strong><br />
-                    <InputText readOnly style={{width: '100%'}} value="F(1 + 0.00001) - F(0.5) = 0.5 - 0.25 = 0.25" />
+                    В примере: <strong>&#958; &isin; [0.5, 1]</strong><br />
+                    <InputText readOnly style={{ width: '100%' }} value="F(1 + 0.00001) - F(0.5) = 0.5 - 0.25 = 0.25" />
                 </Fieldset>
             </>
         );
