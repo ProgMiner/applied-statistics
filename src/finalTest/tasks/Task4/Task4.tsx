@@ -76,7 +76,7 @@ export class Task4 extends FinalTask<{}, Task4State> {
 
                 <DataTable value={Task4.table}>
                     <Column header="Функция" body={(d: RowType) => (
-                        <img src={d.image} alt={d.name} />
+                        <img src={d.image} alt={d.name} style={{ maxWidth: '100%' }} />
                     )} style={{ textAlign: 'center' }} />
 
                     <Column header="Распределение" body={(d: RowType) => (
