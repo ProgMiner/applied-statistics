@@ -66,7 +66,7 @@ export class Task61 extends Task<{}, Task61State> {
                         Объём <strong>n</strong> =
                     </span>
 
-                    <InputText value={n} onChange={this.onNChange.bind(this)} />
+                    <InputText type="number" value={n} onChange={this.onNChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(n)} />
@@ -81,7 +81,7 @@ export class Task61 extends Task<{}, Task61State> {
                         <strong>random seed</strong> =
                     </span>
 
-                    <InputText value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
+                    <InputText type="number" value={randomSeed} onChange={this.onRandomSeedChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(randomSeed)} />
@@ -93,7 +93,7 @@ export class Task61 extends Task<{}, Task61State> {
                         Количество первых и последних элементов:
                     </span>
 
-                    <InputText value={count} onChange={this.onCountChange.bind(this)} />
+                    <InputText type="number" value={count} onChange={this.onCountChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyInteger(count)} />

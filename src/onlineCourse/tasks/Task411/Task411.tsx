@@ -51,7 +51,7 @@ export class Task411 extends Task<{}, Task411State> {
                             <strong>n</strong> =
                         </span>
 
-                        <InputText value={n} onChange={this.onStateChange('n')} />
+                        <InputText type="number" value={n} onChange={this.onStateChange('n')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyInteger(n)} />
@@ -63,7 +63,7 @@ export class Task411 extends Task<{}, Task411State> {
                             <strong>p</strong> =
                         </span>
 
-                        <InputText value={p} onChange={this.onStateChange('p')} />
+                        <InputText type="number" value={p} onChange={this.onStateChange('p')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(p)} />

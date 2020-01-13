@@ -208,7 +208,7 @@ export class InputDistribution extends React.Component<InputDistributionProps, I
                             <strong>{param.name}</strong> =
                         </span>
 
-                        <InputText value={value} onChange={this.onDistributionParamChange(param.field)} />
+                        <InputText type="number" value={value} onChange={this.onDistributionParamChange(param.field)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={param.integer ? verifyInteger(value) : verifyNumber(value)} />

@@ -98,7 +98,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                                 {param.letter}<sub>{i + 1}</sub>
                             </span>
 
-                            <InputText value={this.state[param.name as 'e' | 'n'][i]}
+                            <InputText type="number" value={this.state[param.name as 'e' | 'n'][i]}
                                        onChange={this.onRowChange(param.name as 'e' | 'n', i)} />
 
                             <span className="p-inputgroup-addon">
@@ -113,7 +113,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                             P<sub>{i + 1},{j + 1}</sub>
                         </span>
 
-                        <InputText value={p[i][j]} onChange={this.onPChange(i, j)} />
+                        <InputText type="number" value={p[i][j]} onChange={this.onPChange(i, j)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(p[i][j])} />

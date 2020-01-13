@@ -76,7 +76,7 @@ export class Task511 extends Task<{}, Task511State> {
                                 <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
-                            <InputText value={e[i]} onChange={this.onRowChange('e', i)} />
+                            <InputText type="number" value={e[i]} onChange={this.onRowChange('e', i)} />
                         </React.Fragment>
                     ))}
 
@@ -96,7 +96,7 @@ export class Task511 extends Task<{}, Task511State> {
                                 <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
-                            <InputText value={p[i]} onChange={this.onRowChange('p', i)} />
+                            <InputText type="number" value={p[i]} onChange={this.onRowChange('p', i)} />
                         </React.Fragment>
                     ))}
 
@@ -118,7 +118,7 @@ export class Task511 extends Task<{}, Task511State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={expr.a} onChange={this.onExprChange('a')} />
+                        <InputText type="number" value={expr.a} onChange={this.onExprChange('a')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(expr.a)} />
@@ -130,7 +130,7 @@ export class Task511 extends Task<{}, Task511State> {
                             <strong>p</strong> =
                         </span>
 
-                        <InputText value={expr.p} onChange={this.onExprChange('p')} />
+                        <InputText type="number" value={expr.p} onChange={this.onExprChange('p')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(expr.p)} />
@@ -142,7 +142,7 @@ export class Task511 extends Task<{}, Task511State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={expr.b} onChange={this.onExprChange('b')} />
+                        <InputText type="number" value={expr.b} onChange={this.onExprChange('b')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(expr.b)} />

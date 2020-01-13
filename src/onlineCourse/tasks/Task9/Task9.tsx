@@ -82,7 +82,7 @@ export class Task9 extends Task<{}, Task9State> {
                                 <strong>m</strong> =
                             </span>
 
-                            <InputText value={specificParameters.m ?? ''}
+                            <InputText type="number" value={specificParameters.m ?? ''}
                                        onChange={this.onSpecificParameterChange('m')} />
 
                             <span className="p-inputgroup-addon">
@@ -112,7 +112,7 @@ export class Task9 extends Task<{}, Task9State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={specificParameters.a ?? ''}
+                        <InputText type="number" value={specificParameters.a ?? ''}
                                    onChange={this.onSpecificParameterChange('a')} />
 
                         <span className="p-inputgroup-addon">
@@ -131,7 +131,7 @@ export class Task9 extends Task<{}, Task9State> {
                             {paramTitle}:
                         </span>
 
-                        <InputText value={specificParameters.k ?? ''}
+                        <InputText type="number" value={specificParameters.k ?? ''}
                                    onChange={this.onSpecificParameterChange('k')} />
 
                         <span className="p-inputgroup-addon">

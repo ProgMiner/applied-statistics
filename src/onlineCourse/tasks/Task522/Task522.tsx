@@ -54,7 +54,7 @@ export class Task522 extends Task<{}, Task522State> {
                         <strong>&#917;&#958;<sub>1</sub></strong> =
                     </span>
 
-                    <InputText value={e[0]} onChange={this.onEChange(0)} />
+                    <InputText type="number" value={e[0]} onChange={this.onEChange(0)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(e[0])} />
@@ -66,7 +66,7 @@ export class Task522 extends Task<{}, Task522State> {
                         <strong>&#917;&#958;<sub>2</sub></strong> =
                     </span>
 
-                    <InputText value={e[1]} onChange={this.onEChange(1)} />
+                    <InputText type="number" value={e[1]} onChange={this.onEChange(1)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(e[1])} />
@@ -81,7 +81,7 @@ export class Task522 extends Task<{}, Task522State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={a} onChange={this.onParamChange('a')} />
+                        <InputText type="number" value={a} onChange={this.onParamChange('a')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(a)} />
@@ -93,7 +93,7 @@ export class Task522 extends Task<{}, Task522State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={b} onChange={this.onParamChange('b')} />
+                        <InputText type="number" value={b} onChange={this.onParamChange('b')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(b)} />
@@ -122,7 +122,7 @@ export class Task522 extends Task<{}, Task522State> {
                         <strong>&#917;(&#958;<sub>1</sub>&#958;<sub>2</sub>)</strong> =
                     </span>
 
-                    <InputText value={+e[0] * +e[1]} readOnly />
+                    <InputText readOnly value={+e[0] * +e[1]} />
                 </div>
             </>
         );

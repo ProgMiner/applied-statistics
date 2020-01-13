@@ -48,7 +48,7 @@ export class Task412 extends Task<{}, Task412State> {
                             <strong>p</strong> =
                         </span>
 
-                        <InputText value={p} onChange={this.onStateChange('p')} />
+                        <InputText type="number" value={p} onChange={this.onStateChange('p')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(p)} />

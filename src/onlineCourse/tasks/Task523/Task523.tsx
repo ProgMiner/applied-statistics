@@ -55,7 +55,7 @@ export class Task523 extends Task<{}, Task523State> {
                         <strong>D&#958;<sub>1</sub></strong> =
                     </span>
 
-                    <InputText value={d[0]} onChange={this.onDChange(0)} />
+                    <InputText type="number" value={d[0]} onChange={this.onDChange(0)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(d[0])} />
@@ -67,7 +67,7 @@ export class Task523 extends Task<{}, Task523State> {
                         <strong>D&#958;<sub>2</sub></strong> =
                     </span>
 
-                    <InputText value={d[1]} onChange={this.onDChange(1)} />
+                    <InputText type="number" value={d[1]} onChange={this.onDChange(1)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(d[1])} />
@@ -85,7 +85,7 @@ export class Task523 extends Task<{}, Task523State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={a} onChange={this.onParamChange('a')} />
+                        <InputText type="number" value={a} onChange={this.onParamChange('a')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(a)} />
@@ -97,7 +97,7 @@ export class Task523 extends Task<{}, Task523State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={b} onChange={this.onParamChange('b')} />
+                        <InputText type="number" value={b} onChange={this.onParamChange('b')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(b)} />
@@ -109,7 +109,7 @@ export class Task523 extends Task<{}, Task523State> {
                             <strong>c</strong> =
                         </span>
 
-                        <InputText value={c} onChange={this.onParamChange('c')} />
+                        <InputText type="number" value={c} onChange={this.onParamChange('c')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(c)} />

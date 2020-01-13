@@ -49,7 +49,7 @@ export class Task521 extends Task<{}, Task521State> {
                             <strong>p</strong> =
                         </span>
 
-                        <InputText value={p} onChange={this.onExprChange('p')} />
+                        <InputText type="number" value={p} onChange={this.onExprChange('p')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(p)} />
@@ -61,7 +61,7 @@ export class Task521 extends Task<{}, Task521State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={a} onChange={this.onExprChange('a')} />
+                        <InputText type="number" value={a} onChange={this.onExprChange('a')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(a)} />
@@ -73,7 +73,7 @@ export class Task521 extends Task<{}, Task521State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={b} onChange={this.onExprChange('b')} />
+                        <InputText type="number" value={b} onChange={this.onExprChange('b')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(b)} />

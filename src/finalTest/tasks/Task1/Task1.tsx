@@ -50,7 +50,7 @@ export class Task1 extends FinalTask<{}, Task1State> {
             <>
                 Количество белых шаров:{' '}
                 <div className="p-inputgroup margin-bottom">
-                    <InputText value={white} onChange={this.onChangeState('white')} />
+                    <InputText type="number" value={white} onChange={this.onChangeState('white')} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(white)} />
@@ -59,7 +59,7 @@ export class Task1 extends FinalTask<{}, Task1State> {
 
                 Количество красных шаров:{' '}
                 <div className="p-inputgroup">
-                    <InputText value={red} onChange={this.onChangeState('red')} />
+                    <InputText type="number" value={red} onChange={this.onChangeState('red')} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(red)} />

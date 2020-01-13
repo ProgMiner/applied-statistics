@@ -49,7 +49,7 @@ export class Task413 extends Task<{}, Task413State> {
                             <strong>&#955;</strong> =
                         </span>
 
-                        <InputText value={l} onChange={this.onStateChange('l')} />
+                        <InputText type="number" value={l} onChange={this.onStateChange('l')} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(l)} />

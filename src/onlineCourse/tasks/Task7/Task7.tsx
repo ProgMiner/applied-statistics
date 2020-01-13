@@ -175,7 +175,7 @@ export class Task7 extends Task<{}, Task7State> {
                                 <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
-                            <InputText value={sampleIndices[i]}
+                            <InputText type="number" value={sampleIndices[i]}
                                        onChange={this.onIndexChange('sampleIndices', i)} />
                         </React.Fragment>
                     ))}
@@ -196,7 +196,7 @@ export class Task7 extends Task<{}, Task7State> {
                                 <span className="p-inputgroup-addon" style={{ minWidth: 0 }} />
                             )}
 
-                            <InputText value={intervalIndices[i]}
+                            <InputText type="number" value={intervalIndices[i]}
                                        onChange={this.onIndexChange('intervalIndices', i)} />
                         </React.Fragment>
                     ))}

@@ -51,7 +51,7 @@ export class Task512 extends Task<{}, Task512State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={a[0]} onChange={this.onParamChange('a', 0)} />
+                        <InputText type="number" value={a[0]} onChange={this.onParamChange('a', 0)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(a[0])} />
@@ -63,7 +63,7 @@ export class Task512 extends Task<{}, Task512State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={b[0]} onChange={this.onParamChange('b', 0)} />
+                        <InputText type="number" value={b[0]} onChange={this.onParamChange('b', 0)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(b[0])} />
@@ -79,7 +79,7 @@ export class Task512 extends Task<{}, Task512State> {
                             <strong>a</strong> =
                         </span>
 
-                        <InputText value={a[1]} onChange={this.onParamChange('a', 1)} />
+                        <InputText type="number" value={a[1]} onChange={this.onParamChange('a', 1)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(a[1])} />
@@ -91,7 +91,7 @@ export class Task512 extends Task<{}, Task512State> {
                             <strong>b</strong> =
                         </span>
 
-                        <InputText value={b[1]} onChange={this.onParamChange('b', 1)} />
+                        <InputText type="number" value={b[1]} onChange={this.onParamChange('b', 1)} />
 
                         <span className="p-inputgroup-addon">
                             <ValidationIcon valid={verifyNumber(b[1])} />

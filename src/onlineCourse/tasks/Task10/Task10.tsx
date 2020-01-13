@@ -65,7 +65,7 @@ export class Task10 extends Task<{}, Task10State> {
                         Вес одного эскимо:
                     </span>
 
-                    <InputText value={m} onChange={this.onMChange.bind(this)} />
+                    <InputText type="number" value={m} onChange={this.onMChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyInteger(m)} />
@@ -77,7 +77,7 @@ export class Task10 extends Task<{}, Task10State> {
                         <strong>&#949;</strong> =
                     </span>
 
-                    <InputText value={e} onChange={this.onEChange.bind(this)} />
+                    <InputText type="number" value={e} onChange={this.onEChange.bind(this)} />
 
                     <span className="p-inputgroup-addon">
                         <ValidationIcon valid={verifyNumber(e)} />
