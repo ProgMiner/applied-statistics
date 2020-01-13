@@ -63,7 +63,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                     </tbody>
                 </table>
 
-                Составьте маргинальные распределения &#958; и &#951;.
+                Составьте маргинальные распределения <strong>&#958;</strong> и <strong>&#951;</strong>.
             </>
         );
     }
@@ -132,7 +132,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
 
         return (
             <>
-                Найдите математические ожидания E&#958;:
+                Найдите математические ожидания <strong>E&#958;</strong>:
                 <br />
 
                 <InputText readOnly value={+e[0] * (+p[0][0] + +p[1][0]) + +e[1] * (+p[0][1] + +p[1][1])} />
@@ -140,7 +140,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                 <br />
                 <br />
 
-                Найдите математические ожидания E&#951;:
+                Найдите математические ожидания <strong>E&#951;</strong>:
                 <br />
 
                 <InputText readOnly value={en} />
@@ -148,7 +148,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                 <br />
                 <br />
 
-                Найдите дисперсию D&#951;:
+                Найдите дисперсию <strong>D&#951;</strong>:
                 <br />
 
                 <InputText readOnly value={en2 - en ** 2} />

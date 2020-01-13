@@ -3,7 +3,7 @@ import { LoadingContainer } from '../LoadingContainer/LoadingContainer';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 
-interface TaskState {
+export interface TaskState {
 
     answer?: React.ReactNode;
 }
