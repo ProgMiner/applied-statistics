@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "75a1266d3bf4c4b71840b2eb40f6add2",
+    "revision": "ce1e786676fa748f9ebc7e7b0123be94",
     "url": "/applied-statistics/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/applied-statistics/static/css/2.72a5daec.chunk.css"
   },
   {
-    "revision": "2682e4814e3d0de76bc8",
+    "revision": "f9e97c3da9fa060472d7",
     "url": "/applied-statistics/static/css/main.d6bcbc2a.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/applied-statistics/static/js/2.315bd274.chunk.js.LICENSE"
   },
   {
-    "revision": "2682e4814e3d0de76bc8",
-    "url": "/applied-statistics/static/js/main.261a3f1a.chunk.js"
+    "revision": "f9e97c3da9fa060472d7",
+    "url": "/applied-statistics/static/js/main.e03d5643.chunk.js"
   },
   {
     "revision": "2c7e314716e44d7dcf0b",

@@ -18,6 +18,7 @@ import { Task2 } from '../../finalTest/tasks/Task2/Task2';
 import { Task3 } from '../../finalTest/tasks/Task3/Task3';
 import { Task4 } from '../../finalTest/tasks/Task4/Task4';
 import { Task5 } from '../../finalTest/tasks/Task5/Task5';
+import { Task6 } from '../../finalTest/tasks/Task6/Task6';
 
 export class App extends React.Component {
 
@@ -45,7 +46,7 @@ export class App extends React.Component {
                             <AccordionTab header="Задача 3"><Task3 /></AccordionTab>
                             <AccordionTab header="Задача 4"><Task4 /></AccordionTab>
                             <AccordionTab header="Задача 5"><Task5 /></AccordionTab>
-                            <AccordionTab disabled header="Задача 6 (coming soon)"></AccordionTab>
+                            <AccordionTab header="Задача 6"><Task6 /></AccordionTab>
                             <AccordionTab disabled header="Задача 7 (coming soon)"></AccordionTab>
                             <AccordionTab disabled header="Задача 8 (coming soon)"></AccordionTab>
                         </Accordion>

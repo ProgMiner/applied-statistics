@@ -22,7 +22,7 @@ interface CountObject {
 
 export class Task621 extends Task<{}, Task621State> {
 
-    private alchemistsRegexp = /^( *\()?( *\d+( *,)?)* *\d+? *(\) *)?$/;
+    private static alchemistsRegexp = /^( *\()?( *\d+( *,)?)* *\d+? *(\) *)?$/;
 
     state: Task621State = { alchemists: '' };
 
@@ -35,7 +35,7 @@ export class Task621 extends Task<{}, Task621State> {
     }
 
     protected checkParameters(): boolean {
-        return this.alchemistsRegexp.test(this.state.alchemists);
+        return Task621.alchemistsRegexp.test(this.state.alchemists);
     }
 
     protected renderParameters() {
@@ -51,7 +51,7 @@ export class Task621 extends Task<{}, Task621State> {
                            onChange={this.onAlchemistsChange.bind(this)} />
 
                 <span className="p-inputgroup-addon">
-                    <ValidationIcon valid={this.alchemistsRegexp.test(alchemists)} />
+                    <ValidationIcon valid={Task621.alchemistsRegexp.test(alchemists)} />
                 </span>
             </div>
         );
