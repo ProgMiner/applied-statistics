@@ -6,23 +6,21 @@ import { Task } from '../../../components/Task/Task';
 import { ValidationIcon } from '../../../components/ValidationIcon/ValidationIcon';
 import { verifyNumber } from '../../../utils/verifyNumber';
 import { verifyInteger } from '../../../utils/verifyInteger';
-import { factorial } from '../../../utils/factorial';
-import { normalizeNumber } from '../../../utils/normalizeNumber';
 import { leftExprRegexp, parseExpression, rightExprRegexp } from '../../../utils/parseExpression';
 
-interface Task411State {
+interface Task421State {
 
-    n: string;
-    p: string;
+    a: string;
+    b: string;
     leftExpr: string;
     rightExpr: string;
 }
 
-export class Task411 extends Task<{}, Task411State> {
+export class Task421 extends Task<{}, Task421State> {
 
-    state: Task411State = { n: '', p: '', leftExpr: '', rightExpr: '' };
+    state: Task421State = { a: '', b: '', leftExpr: '', rightExpr: '' };
 
-    private onStateChange(param: 'n' | 'p' | 'leftExpr' | 'rightExpr', trim: boolean = true) {
+    private onStateChange(param: 'a' | 'b' | 'leftExpr' | 'rightExpr', trim: boolean = true) {
         return (e: React.FormEvent<HTMLInputElement>) => {
             this.setState({
                 ...this.state,
@@ -33,40 +31,40 @@ export class Task411 extends Task<{}, Task411State> {
     }
 
     protected checkParameters(): boolean {
-        const { n, p, leftExpr, rightExpr } = this.state;
+        const { a, b, leftExpr, rightExpr } = this.state;
 
-        return verifyInteger(n) && verifyNumber(p) && leftExprRegexp.test(leftExpr) && rightExprRegexp.test(rightExpr);
+        return verifyInteger(a) && verifyNumber(b) && leftExprRegexp.test(leftExpr) && rightExprRegexp.test(rightExpr);
     }
 
     protected renderParameters() {
-        const { n, p, leftExpr, rightExpr } = this.state;
+        const { a, b, leftExpr, rightExpr } = this.state;
 
         return (
             <>
                 <Fieldset legend={
-                    <strong>Bin({n || 'n'}, {p || 'p'})</strong>
+                    <strong>U<sub>{a || 'a'}, {b || 'b'}</sub></strong>
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            <strong>n</strong> =
+                            <strong>a</strong> =
                         </span>
 
-                        <InputText type="number" value={n} onChange={this.onStateChange('n')} />
+                        <InputText type="number" value={a} onChange={this.onStateChange('a')} />
 
                         <span className="p-inputgroup-addon">
-                            <ValidationIcon valid={verifyInteger(n)} />
+                            <ValidationIcon valid={verifyInteger(a)} />
                         </span>
                     </div>
 
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            <strong>p</strong> =
+                            <strong>b</strong> =
                         </span>
 
-                        <InputText type="number" value={p} onChange={this.onStateChange('p')} />
+                        <InputText type="number" value={b} onChange={this.onStateChange('b')} />
 
                         <span className="p-inputgroup-addon">
-                            <ValidationIcon valid={verifyNumber(p)} />
+                            <ValidationIcon valid={verifyNumber(b)} />
                         </span>
                     </div>
                 </Fieldset>
@@ -101,7 +99,7 @@ export class Task411 extends Task<{}, Task411State> {
     }
 
     protected async renderAnswer() {
-        const { n, p, leftExpr, rightExpr } = this.state;
+        const { a, b, leftExpr, rightExpr } = this.state;
 
         const cleanedLeftExpr = leftExpr.replace(/\s/, '');
         const cleanedRightExpr = rightExpr.replace(/\s/, '');
@@ -112,21 +110,34 @@ export class Task411 extends Task<{}, Task411State> {
             );
         }
 
-        const { k1, k2 } = parseExpression(cleanedLeftExpr, cleanedRightExpr, 0, +n + 1);
-
-        let s = 0;
-        for (let k = k1; k < k2; ++k) {
-            s += (+p) ** k * (1 - +p) ** (+n - k) / factorial(k) / factorial(+n - k);
-        }
+        const { k1, k2 } = parseExpression(cleanedLeftExpr, cleanedRightExpr, +a, +b);
 
         return (
-            <div className="p-inputgroup">
-                <span className="p-inputgroup-addon">
-                    <strong>P({k1} &le; &#958; &lt; {k2})</strong> =
-                </span>
+            <>
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        <strong>P({k1} &le; &#958; &lt; {k2})</strong> =
+                    </span>
 
-                <InputText readOnly value={normalizeNumber(factorial(+n) * s)} />
-            </div>
+                    <InputText readOnly value={`${k2 - k1} / ${+b - +a}`} />
+                </div>
+
+                <div className="p-inputgroup half-margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        <strong>&forall;x &notin; [{a}, {b}], f<sub>&#958;</sub>(x)</strong> =
+                    </span>
+
+                    <InputText readOnly value="0" />
+                </div>
+
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <strong>&forall;x &isin; [{a}, {b}], f<sub>&#958;</sub>(x)</strong> =
+                    </span>
+
+                    <InputText readOnly value={`1 / ${+b - +a}`} />
+                </div>
+            </>
         );
     }
 }

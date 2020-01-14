@@ -56,9 +56,11 @@ export class Task413 extends Task<{}, Task413State> {
                         </span>
                     </div>
                 </Fieldset>
+
                 <br />
 
                 <strong>В выражении используйте &lt;= для &le;.</strong>
+
                 <br />
                 <br />
 
@@ -77,9 +79,7 @@ export class Task413 extends Task<{}, Task413State> {
                     <InputText value={rightExpr} onChange={this.onStateChange('rightExpr', false)} />
 
                     <span className="p-inputgroup-addon">
-                        <ValidationIcon
-                            valid={leftExprRegexp.test(leftExpr) && rightExprRegexp.test(rightExpr)}
-                        />
+                        <ValidationIcon valid={leftExprRegexp.test(leftExpr) && rightExprRegexp.test(rightExpr)} />
                     </span>
                 </div>
             </>
@@ -108,7 +108,7 @@ export class Task413 extends Task<{}, Task413State> {
         return (
             <div className="p-inputgroup">
                 <span className="p-inputgroup-addon">
-                    <strong>P({k1} &le; &#958; &le; {k2})</strong> =
+                    <strong>P({k1} &le; &#958; &lt; {k2})</strong> =
                 </span>
 
                 <InputText readOnly value={normalizeNumber(Math.exp(-l) * s)} />
