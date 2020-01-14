@@ -95,7 +95,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                     .map(param => [0, 1].map(i => (
                         <div key={param.name + i} className="p-inputgroup margin-bottom">
                             <span className="p-inputgroup-addon">
-                                {param.letter}<sub>{i + 1}</sub>
+                                <strong>{param.letter}<sub>{i + 1}</sub></strong>
                             </span>
 
                             <InputText type="number" value={this.state[param.name as 'e' | 'n'][i]}
@@ -110,7 +110,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                 {[0, 1].map(i => [0, 1].map(j => (
                     <div key={i + ',' + j} className={`p-inputgroup ${!(i && j) && 'margin-bottom'}`}>
                         <span className="p-inputgroup-addon">
-                            P<sub>{i + 1},{j + 1}</sub>
+                            <strong>P<sub>{i + 1},{j + 1}</sub></strong>
                         </span>
 
                         <InputText type="number" value={p[i][j]} onChange={this.onPChange(i, j)} />

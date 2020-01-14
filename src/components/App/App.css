@@ -29,3 +29,7 @@ code {
 .margin-bottom {
     margin-bottom: 1ch;
 }
+
+.max-width-100 {
+    max-width: 100%;
+}

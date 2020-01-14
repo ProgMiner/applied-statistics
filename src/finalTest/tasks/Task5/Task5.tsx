@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FinalTask } from '../../components/FinalTask/FinalTask';
-import { calcVariance, Distribution, DistributionType, renderDistribution } from '../../../utils/distribution';
+import { calcVariance, Distribution, renderDistribution } from '../../../utils/distribution';
 import { InputDistribution } from '../../../components/InputDistribution/InputDistribution';
 import { Fieldset } from 'primereact/fieldset';
 import { InputText } from 'primereact/inputtext';

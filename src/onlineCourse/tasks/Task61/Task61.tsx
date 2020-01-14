@@ -162,7 +162,7 @@ print(sum(sample)/len(sample))
                         в разделе!
                         <br />
 
-                        <img src={pythonTab} alt="вкладка Python" />
+                        <img src={pythonTab} alt="вкладка Python" className="max-width-100" />
                         <hr />
                     </>
                 )}
