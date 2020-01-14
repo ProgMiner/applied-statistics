@@ -108,8 +108,7 @@ export class Task3 extends FinalTask<{}, Task3State> {
 
                 <br />
 
-                Найдите вероятность того, что <strong>&#958; &isin; [<strong>{a || 'a'}</strong>,{' '}
-                <strong>{b || 'b'}</strong>]</strong>.
+                Найдите вероятность того, что <strong>&#958; &isin; [{a || 'a'}, {b || 'b'}]</strong>.
 
                 <br />
                 <br />
@@ -242,7 +241,13 @@ export class Task3 extends FinalTask<{}, Task3State> {
         return (
             <>
                 Ответ:{' '}
-                <InputText readOnly value={F(+b + 0.00001) - F(+a)} />
+                <div className="p-inputgroup margin-bottom">
+                    <span className="p-inputgroup-addon">
+                        <strong>P(&#958; &isin; [{a}, {b}])</strong> =
+                    </span>
+
+                    <InputText readOnly value={F(+b + 0.0001) - F(+a)} />
+                </div>
             </>
         );
     }

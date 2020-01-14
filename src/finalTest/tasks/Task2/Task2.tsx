@@ -39,7 +39,7 @@ export class Task2 extends FinalTask<{}, Task2State> {
                 Случайный вектор имеет распределение, задаваемое таблицей:
                 <br />
 
-                <table>
+                <table style={{ margin: '0 auto' }}>
                     <thead>
                     <tr>
                         <th>&#951; \ &#958;</th>
@@ -132,25 +132,19 @@ export class Task2 extends FinalTask<{}, Task2State> {
 
         return (
             <>
-                Найдите математические ожидания <strong>E&#958;</strong>:
-                <br />
-
+                Найдите математические ожидания <strong>E&#958;</strong>:{' '}
                 <InputText readOnly value={+e[0] * (+p[0][0] + +p[1][0]) + +e[1] * (+p[0][1] + +p[1][1])} />
 
                 <br />
                 <br />
 
-                Найдите математические ожидания <strong>E&#951;</strong>:
-                <br />
-
+                Найдите математические ожидания <strong>E&#951;</strong>:{' '}
                 <InputText readOnly value={en} />
 
                 <br />
                 <br />
 
-                Найдите дисперсию <strong>D&#951;</strong>:
-                <br />
-
+                Найдите дисперсию <strong>D&#951;</strong>:{' '}
                 <InputText readOnly value={en2 - en ** 2} />
             </>
         );

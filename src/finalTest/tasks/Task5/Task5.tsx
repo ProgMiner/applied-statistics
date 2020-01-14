@@ -124,7 +124,7 @@ export class Task5 extends FinalTask<{}, Task5State> {
 
         return (
             <>
-                Найдите <strong>D({a}&#958; + {b}&#951; + {c || 'c'})</strong>:<br />
+                Найдите <strong>D({a}&#958; + {b}&#951; + {c || 'c'})</strong>:{' '}
                 <InputText value={(+a) ** 2 * calcVariance(e) + (+b) ** 2 * calcVariance(n)} />
             </>
         );
