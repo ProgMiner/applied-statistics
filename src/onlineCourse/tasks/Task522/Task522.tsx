@@ -13,7 +13,7 @@ interface Task522State {
     b: string;
 }
 
-export class Task522 extends Task<{}, Task522State> {
+export class Task522 extends Task<Task522State> {
 
     state: Task522State = { e: ['', ''], a: '', b: '' };
 

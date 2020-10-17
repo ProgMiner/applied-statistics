@@ -13,7 +13,7 @@ interface Task2State {
     pChanged: number; // Hack
 }
 
-export class Task2 extends FinalTask<{}, Task2State> {
+export class Task2 extends FinalTask<Task2State> {
 
     state: Task2State = { e: ['', ''], n: ['', ''], p: [['', ''], ['', '']], pChanged: 0 };
 

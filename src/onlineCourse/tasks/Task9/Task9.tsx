@@ -19,7 +19,7 @@ interface Task9State {
     specificParameters: { [key: string]: string };
 }
 
-export class Task9 extends Task<{}, Task9State> {
+export class Task9 extends Task<Task9State> {
 
     state: Task9State = { specificParameters: {} };
 

@@ -16,7 +16,7 @@ interface Task622State {
     distribution?: Distribution;
 }
 
-export class Task622 extends Task<{}, Task622State> {
+export class Task622 extends Task<Task622State> {
 
     state: Task622State = {};
 

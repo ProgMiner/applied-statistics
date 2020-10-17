@@ -20,7 +20,7 @@ interface Task3State {
     b: string;
 }
 
-export class Task3 extends FinalTask<{}, Task3State> {
+export class Task3 extends FinalTask<Task3State> {
 
     state: Task3State = {
         f: ['0', '', '', '1'],

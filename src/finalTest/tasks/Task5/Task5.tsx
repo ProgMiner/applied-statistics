@@ -18,7 +18,7 @@ interface Task5State {
     c: string;
 }
 
-export class Task5 extends FinalTask<{}, Task5State> {
+export class Task5 extends FinalTask<Task5State> {
 
     state: Task5State = { a: '', b: '', c: '' };
 

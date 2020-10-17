@@ -114,7 +114,7 @@ interface Task7State {
     intervalIndices: [string, string, string];
 }
 
-export class Task7 extends Task<{}, Task7State> {
+export class Task7 extends Task<Task7State> {
 
     state: Task7State = {
         cities: [],

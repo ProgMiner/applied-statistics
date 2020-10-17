@@ -23,7 +23,7 @@ interface RowType {
     distribution: React.ReactNode
 }
 
-export class Task4 extends FinalTask<{}, Task4State> {
+export class Task4 extends FinalTask<Task4State> {
 
     private static table: RowType[] = [
         { name: 'I', image: distributionIImage, distribution: (<>I<sub>x<sub>0</sub></sub></>) },

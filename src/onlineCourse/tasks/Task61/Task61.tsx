@@ -18,7 +18,7 @@ interface Task61State {
     count: string;
 }
 
-export class Task61 extends Task<{}, Task61State> {
+export class Task61 extends Task<Task61State> {
 
     state: Task61State = { n: '', randomSeed: '', count: '5' };
 

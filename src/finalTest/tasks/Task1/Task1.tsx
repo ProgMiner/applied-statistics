@@ -11,7 +11,7 @@ interface Task1State {
     red: string;
 }
 
-export class Task1 extends FinalTask<{}, Task1State> {
+export class Task1 extends FinalTask<Task1State> {
 
     state: Task1State = { white: '', red: '' };
 

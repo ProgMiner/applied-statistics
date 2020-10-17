@@ -1,21 +1,23 @@
 import React from 'react';
-import { LoadingContainer } from '../LoadingContainer/LoadingContainer';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
+
+import { LoadingContainer } from '../LoadingContainer/LoadingContainer';
 
 export interface TaskState {
 
     answer?: React.ReactNode;
 }
 
-export abstract class Task<P = {}, S = {}> extends React.Component<React.PropsWithChildren<P>, S & TaskState> {
+// noinspection JSIgnoredPromiseFromCall
+export abstract class Task<S = {}, P = {}> extends React.Component<P, S & TaskState> {
 
     protected readonly className?: string | string[];
 
     private readonly taskClassName: string;
     private answerPromise?: Promise<React.ReactNode>;
 
-    state = {} as S & TaskState;
+    abstract state: S & TaskState;
 
     protected constructor(props: P) {
         super(props);
@@ -32,21 +34,29 @@ export abstract class Task<P = {}, S = {}> extends React.Component<React.PropsWi
         this.taskClassName = classNames.join(' ');
     }
 
+    componentDidMount() {
+        if (this.checkParameters()) {
+            this.fetchAnswer();
+        }
+    }
+
     componentDidUpdate(
         prevProps: Readonly<React.PropsWithChildren<P>>,
         prevState: Readonly<S & TaskState>,
         snapshot?: any
     ) {
         if (!isEqual(omit(this.state, 'answer'), omit(prevState, 'answer')) && this.checkParameters()) {
-            (async () => {
-                const answerPromise = this.answerPromise = this.renderAnswer();
-                this.setState({ ...this.state, answer: undefined });
+            this.fetchAnswer();
+        }
+    }
 
-                const answer = await answerPromise;
-                if (this.answerPromise === answerPromise) {
-                    this.setState({ ...this.state, answer });
-                }
-            })();
+    private async fetchAnswer() {
+        const answerPromise = this.answerPromise = this.renderAnswer();
+        this.setState({ ...this.state, answer: undefined });
+
+        const answer = await answerPromise;
+        if (this.answerPromise === answerPromise) {
+            this.setState({ ...this.state, answer });
         }
     }
 
@@ -60,7 +70,7 @@ export abstract class Task<P = {}, S = {}> extends React.Component<React.PropsWi
                         <hr />
 
                         {this.renderLoading()}
-                        </>
+                    </>
                 )}
             </div>
         );

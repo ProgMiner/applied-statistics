@@ -20,7 +20,7 @@ interface CountObject {
     count: number;
 }
 
-export class Task621 extends Task<{}, Task621State> {
+export class Task621 extends Task<Task621State> {
 
     private static alchemistsRegexp = /^( *\()?( *\d+( *,)?)* *\d+? *(\) *)?$/;
 

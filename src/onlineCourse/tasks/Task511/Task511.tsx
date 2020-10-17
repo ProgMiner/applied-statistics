@@ -18,7 +18,7 @@ interface Task511State {
     }
 }
 
-export class Task511 extends Task<{}, Task511State> {
+export class Task511 extends Task<Task511State> {
 
     state: Task511State = {
         e: ['', '', '', ''],

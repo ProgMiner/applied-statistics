@@ -21,7 +21,7 @@ interface Task8State {
     specificParameters: { [key: string]: string };
 }
 
-export class Task8 extends Task<{}, Task8State> {
+export class Task8 extends Task<Task8State> {
 
     state: Task8State = { specificParameters: {} };
 

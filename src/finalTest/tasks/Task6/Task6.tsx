@@ -13,7 +13,7 @@ interface Task6State {
     sample: string;
 }
 
-export class Task6 extends FinalTask<{}, Task6State> {
+export class Task6 extends FinalTask<Task6State> {
 
     private static sampleRegexp = /^( *\()?( *\d+( *,)?)* *\d+? *(\) *)?$/;
 

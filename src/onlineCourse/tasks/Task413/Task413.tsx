@@ -16,7 +16,7 @@ interface Task413State {
     rightExpr: string;
 }
 
-export class Task413 extends Task<{}, Task413State> {
+export class Task413 extends Task<Task413State> {
 
     state: Task413State = { l: '', leftExpr: '', rightExpr: '' };
 
