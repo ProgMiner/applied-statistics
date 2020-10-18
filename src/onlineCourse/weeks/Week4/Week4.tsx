@@ -17,7 +17,7 @@ export class Week4 extends Week {
 
     protected renderContent() {
         return (
-            <Accordion multiple activeIndex={[7]}>
+            <Accordion multiple>
                 <AccordionTab header="Упражнение 1. Задача 1"><Task411 /></AccordionTab>
                 <AccordionTab header="Упражнение 1. Задача 2"><Task412 /></AccordionTab>
                 <AccordionTab header="Упражнение 1. Задача 3"><Task413 /></AccordionTab>

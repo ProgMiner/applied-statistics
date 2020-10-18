@@ -3,7 +3,7 @@ import { gcd } from './gcd';
 export function fraction(numerator: number, denominator: number): string {
     const _gcd = gcd(numerator, denominator);
 
-    if (_gcd == denominator) {
+    if (_gcd === denominator) {
         return '' + (numerator / _gcd);
     }
 

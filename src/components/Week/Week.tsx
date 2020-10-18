@@ -26,7 +26,7 @@ export abstract class Week<P = {}, S = {}> extends React.Component<P, S> {
     render() {
         return (
             <div className={this.weekClassName}>
-                <Panel header={this.weekName} toggleable collapsed={this.weekName !== 'Неделя 4. Типы распределений случайных величин'}>
+                <Panel header={this.weekName} toggleable collapsed>
                     {this.renderContent()}
                 </Panel>
             </div>

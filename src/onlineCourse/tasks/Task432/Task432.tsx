@@ -17,7 +17,7 @@ interface Task432State {
 
 export class Task432 extends Task<Task432State> {
 
-    readonly state: Task432State = { a: '4', b: '5', p: '3', q: '4' };
+    readonly state: Task432State = { a: '', b: '', p: '', q: '' };
 
     private onStateChange(param: keyof Task432State, trim: boolean = true) {
         return (e: React.FormEvent<HTMLInputElement>) => {
@@ -102,7 +102,9 @@ export class Task432 extends Task<Task432State> {
                             <strong>x &isin; (0, {b}]</strong>:
                         </span>
 
-                        <InputText readOnly value="coming soon" />
+                        <InputText readOnly value={
+                            `${c} / 2 * (${p} * x + ${q}) * (${a} - ${fraction(+a, +b)} * x)^2`
+                        } />
                     </div>
                 </Fieldset>
 
@@ -122,7 +124,9 @@ export class Task432 extends Task<Task432State> {
                             <strong>y &isin; (0, {a}]</strong>:
                         </span>
 
-                        <InputText readOnly value="coming soon" />
+                        <InputText readOnly value={
+                            `${c} * ${b} * y * (${fraction(+p * +b, 2)} * (1 - y / ${a}) + ${q}) * (1 - y / ${a})`
+                        } />
                     </div>
                 </Fieldset>
 
@@ -142,7 +146,7 @@ export class Task432 extends Task<Task432State> {
                             <strong>(x, y) &isin; K</strong>:
                         </span>
 
-                        <InputText readOnly value="coming soon" />
+                        <InputText readOnly value={`${c} / 2 * x * y^2 * (${fraction(+p, 2)} * x + ${q})`} />
                     </div>
 
                     <div className="p-inputgroup half-margin-bottom">
