@@ -66,7 +66,7 @@ export class Task112 extends Task<Task112State> {
             <>
                 <div className="p-inputgroup half-margin-bottom">
                     <span className="p-inputgroup-addon">
-                        Верхняя часть <strong>p1, p2, p3, p4</strong>
+                        Верхняя часть <strong>p1, p2, p3, p4</strong> =
                     </span>
 
                     {[0, 1, 2, 3].map(i => (
@@ -143,6 +143,8 @@ export class Task112 extends Task<Task112State> {
                     </span>
                     <InputText readOnly value="Нет" />
                 </div>
+
+                <br />
 
                 <div className="p-inputgroup">
                     <span className="p-inputgroup-addon">

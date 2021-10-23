@@ -3,5 +3,5 @@ export function verifyString(n?: string): boolean {
         return false;
     }
 
-    return n.trim() === "Орехи" || n.trim() === "Шоколад";
+    return n.trim().toLowerCase() === "орехи" || n.trim().toLowerCase() === "шоколад";
 }

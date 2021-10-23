@@ -3,6 +3,8 @@ import { TabPanel, TabView } from 'primereact/tabview';
 
 import { Header as CourseHeader } from '../../onlineCourse/components/Header/Header';
 import { Week1 } from '../../onlineCourse/weeks/Week1/Week1';
+import { Week2 } from '../../onlineCourse/weeks/Week2/Week2';
+import { Week3 } from '../../onlineCourse/weeks/Week3/Week3';
 import { Week4 } from '../../onlineCourse/weeks/Week4/Week4';
 import { Week5 } from '../../onlineCourse/weeks/Week5/Week5';
 import { Week6 } from '../../onlineCourse/weeks/Week6/Week6';
@@ -24,6 +26,8 @@ export class App extends React.Component {
                     <TabPanel header="Онлайн-курс">
                         <div className="margin-bottom"><CourseHeader /></div>
                         <div className="margin-bottom"><Week1 /></div>
+                        <div className="margin-bottom"><Week2 /></div>
+                        <div className="margin-bottom"><Week3 /></div>
                         <div className="margin-bottom"><Week4 /></div>
                         <div className="margin-bottom"><Week5 /></div>
                         <div className="margin-bottom"><Week6 /></div>

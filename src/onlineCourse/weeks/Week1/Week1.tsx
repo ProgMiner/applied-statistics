@@ -21,6 +21,7 @@ export class Week1 extends Week {
         return (
             <Accordion multiple>
             <AccordionTab header="Упражнение 1. Задача 2"><Task112 /></AccordionTab>
+            <AccordionTab header="Упражнение 1. Задача 3"><Task113 /></AccordionTab>
             <AccordionTab header="Упражнение 4. Задача 2"><Task142 /></AccordionTab>
             </Accordion>
     );
