@@ -66,7 +66,7 @@ export class Task113 extends Task<Task113State> {
                 }>
                     <div className="p-inputgroup half-margin-bottom">
                         <span className="p-inputgroup-addon">
-                            Какое число выпало (четное/нечетное):
+                            Какое число выпало (чётное/нечётное):
                         </span>
 
                         <InputText type="text" value={type_num} onChange={this.onTypeNumChange.bind(this)} />
@@ -118,9 +118,8 @@ export class Task113 extends Task<Task113State> {
             ? (i: number) => i % 2 === 0 : (i: number) => i % 2 !== 0;
         const type_sum = range(1, faces_int + 1).filter(type_sum_flt).reduce((a, b) => a + b);
 
-        const count_num_more_flt = type_num_more.trim().toLowerCase() === 'больше'
-            ? (i: number) => i > +num_more : (i: number) => i < +num_more;
-        const count_num_more = range(1, faces_int + 1).filter(count_num_more_flt).reduce((a, b) => a + b);
+        const count_num_more = Math.min(Math.max(type_num_more.trim().toLowerCase() === 'больше'
+            ? faces_int - +num_more : +num_more - 1, 0), faces_int);
 
         if (faces_int < +num_more) {
             return (<>Число в 3 задании не может быть больше чем граний у кубика</>);
@@ -129,26 +128,26 @@ export class Task113 extends Task<Task113State> {
         return (
             <>
                 <div className="p-inputgroup half-margin-bottom">
-                        <span className="p-inputgroup-addon">
-                            Число <strong>k</strong>:
-                        </span>
+                    <span className="p-inputgroup-addon">
+                        Число <strong>k</strong>:
+                    </span>
 
                     <InputText readOnly value={1 + '/' + sum_faces} />
                 </div>
 
                 <div className="p-inputgroup half-margin-bottom">
-                        <span className="p-inputgroup-addon">
-                            Вероятность события «выпало <strong>{type_num.trim().toLowerCase()}</strong> число»:
-                        </span>
+                    <span className="p-inputgroup-addon">
+                        Вероятность события «выпало <strong>{type_num.trim().toLowerCase()}</strong> число»:
+                    </span>
 
                     <InputText readOnly value={type_sum + '/' + sum_faces} />
                 </div>
 
                 <div className="p-inputgroup">
-                        <span className="p-inputgroup-addon">
-                            Состоит «выпало число <strong>{type_num_more.trim().toLowerCase()}</strong>,{' '}
-                            чем <strong>{num_more}</strong>» из собитый:
-                        </span>
+                    <span className="p-inputgroup-addon">
+                        Состоит «выпало число <strong>{type_num_more.trim().toLowerCase()}</strong>,{' '}
+                        чем <strong>{num_more}</strong>» из событий:
+                    </span>
 
                     <InputText readOnly value={count_num_more} />
                 </div>
