@@ -69,6 +69,10 @@ export class FetchingInputSample extends React.Component<FetchingInputSampleProp
                 }
             } catch (e) {
                 console.log(e);
+
+                if (url.indexOf('http://') === 0) {
+                    this.setState({ url: 'https://' + url.substring(7) });
+                }
             }
 
             this.setState({ ...this.state, loading: false, sample: undefined });
