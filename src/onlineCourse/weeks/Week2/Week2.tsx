@@ -12,8 +12,8 @@ export class Week2 extends Week {
     protected renderContent() {
         return (
             <Accordion multiple>
+                <AccordionTab disabled header="Упражнение 1. Задача 1 (coming soon)" />
                 <AccordionTab header="Упражнение 1. Задача 2"><Task212 /></AccordionTab>
-                <AccordionTab disabled header="Упражнение 1. Задача 2 (coming soon)" />
                 <AccordionTab disabled header="Упражнение 2. Задача 1 (coming soon)" />
                 <AccordionTab disabled header="Упражнение 2. Задача 2 (coming soon)" />
             </Accordion>
