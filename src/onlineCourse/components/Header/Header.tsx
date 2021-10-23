@@ -16,6 +16,9 @@ export class Header extends HeaderTemplate {
                 (9: распределения геометрическое и Пуассона), <strong>Andrey Kharchuk</strong>{' '}
                 (9: равномерное и нормальное распределения), <strong>Александр Щербаков</strong>{' '}
                 (9: последнее задание в нормальном распределении).
+                <br />
+
+                Автор недель 1, 2 и 3: <a href="https://vk.com/egoredgry" target="_blank" rel="noopener noreferrer">RedGry</a>.
             </>
         );
     }
